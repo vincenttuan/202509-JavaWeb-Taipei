@@ -18,7 +18,7 @@ public class McdonaldServlet extends HttpServlet {
 		String mainmeal = req.getParameter("mainmeal");
 		String sidemeal = req.getParameter("sidemeal");
 		String beverage = req.getParameter("beverage");
-		String amount = req.getParameter("amount");
+		String amount   = req.getParameter("amount");
 		
 		int mainmealPrice = Integer.parseInt(mainmeal);
 		int sidemealPrice = Integer.parseInt(sidemeal);
