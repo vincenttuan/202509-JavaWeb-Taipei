@@ -15,8 +15,16 @@ public class McdonaldServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=UTF-8");
 		
-		String hamburger
-		String 
+		String mainmeal = req.getParameter("mainmeal");
+		String sidemeal = req.getParameter("sidemeal");
+		String beverage = req.getParameter("beverage");
+		String amount = req.getParameter("amount");
+		
+		int mainmealPrice = Integer.parseInt(mainmeal);
+		int sidemealPrice = Integer.parseInt(sidemeal);
+		int beveragePrice = Integer.parseInt(beverage);
+		int paymentAmount = Integer.parseInt(amount);
+		
 		
 	}
 	
