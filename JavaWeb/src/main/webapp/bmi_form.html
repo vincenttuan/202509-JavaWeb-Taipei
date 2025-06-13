@@ -8,8 +8,12 @@
 		<form>
 			<fieldset>
 				<legend>BMI 表單</legend>
-				身高: <input type="number" name="height" placeholder="請輸入身高" required /><p />
-				體重: <input type="number" name="weight" placeholder="請輸入體重" required /><p />
+				身高: <input type="number" name="height" 
+							min="50" max="300" step="0.5"
+							placeholder="請輸入身高" required /><p />
+				體重: <input type="number" name="weight"
+							min="10" max="500" step="0.5" 
+							placeholder="請輸入體重" required /><p />
 				<button type="submit">計算</button>
 			</fieldset>
 		</form>
