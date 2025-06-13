@@ -13,8 +13,8 @@ public class BmiServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
+		resp.setContentType("text/html;charset=UTF-8"); // 告知瀏覽器回應內容的型態
+		resp.getWriter().print("BMI Result"); // 在瀏覽器上印出資料
 	}
 	
 }
