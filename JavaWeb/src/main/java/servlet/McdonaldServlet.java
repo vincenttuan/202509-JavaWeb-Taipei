@@ -28,11 +28,20 @@ public class McdonaldServlet extends HttpServlet {
 		int total = mainmealPrice + sidemealPrice + beveragePrice; // 餐點總價
 		int change = paymentAmount - total;
 		
-		// 出單(付款金額足夠才能出單)
-		resp.getWriter().print("餐點金額:" + total + "<p />");
-		resp.getWriter().print("付款金額:" + paymentAmount + "<p />");
-		resp.getWriter().print("找零金額:" + change + "<p />");
-		
+		if(change >= 0) {
+			// 出單(付款金額足夠才能出單)
+			resp.getWriter().print("結帳成功<p />");
+			resp.getWriter().print("====================<p />");
+			resp.getWriter().print("餐點金額:" + total + "<p />");
+			resp.getWriter().print("付款金額:" + paymentAmount + "<p />");
+			resp.getWriter().print("找零金額:" + change + "<p />");
+		} else {
+			// 結帳失敗
+			resp.getWriter().print("結帳失敗<p />");
+			resp.getWriter().print("====================<p />");
+			resp.getWriter().print("餐點金額:" + total + "<p />");
+			resp.getWriter().print("付款金額:" + paymentAmount + "<p />");
+			resp.getWriter().print("不足金額:" + Math.abs(change) + "<p />");
+		}
 	}
-	
 }
