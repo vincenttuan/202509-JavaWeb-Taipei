@@ -25,6 +25,13 @@ public class McdonaldServlet extends HttpServlet {
 		int beveragePrice = Integer.parseInt(beverage);
 		int paymentAmount = Integer.parseInt(amount);
 		
+		int total = mainmealPrice + sidemealPrice + beveragePrice; // 餐點總價
+		int change = paymentAmount - total;
+		
+		// 出單(付款金額足夠才能出單)
+		resp.getWriter().print("餐點金額:" + total + "<p />");
+		resp.getWriter().print("付款金額:" + paymentAmount + "<p />");
+		resp.getWriter().print("找零金額:" + change + "<p />");
 		
 	}
 	
