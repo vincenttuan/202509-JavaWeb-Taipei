@@ -31,6 +31,7 @@ public class BmiServlet extends HttpServlet {
 		double w = Double.parseDouble(weight);
 		double bmi = w / Math.pow(h/100, 2);
 		
+		// 在網頁上印出計算結果
 		resp.getWriter().print("BMI Result: " + bmi); // 在瀏覽器上印出資料
 	}
 	
