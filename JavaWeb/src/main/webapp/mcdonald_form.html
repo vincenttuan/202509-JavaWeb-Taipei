@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>麥當勞</title>
+	</head>
+	<body>
+		<form action="/mcdonald">
+			<fieldset>
+				<legend>麥當勞點餐</legend>
+				主餐:<p />
+				<input type="radio" name="hamburger" value="70" /> 大麥克<p />
+				<input type="radio" name="hamburger" value="49" /> 麥香魚<p />
+				<input type="radio" name="hamburger" value="45" /> 麥香雞<p />
+				<input type="radio" name="hamburger" value="40" /> 吉事漢堡<p />
+				<input type="radio" name="hamburger" value="85" /> 勁辣雞腿堡<p />
+				副餐:<p />
+				<input type="radio" name="sidemeal" value="60" /> 大薯<p />
+				<input type="radio" name="sidemeal" value="40" /> 小薯<p />
+				<input type="radio" name="sidemeal" value="45" /> 蘋果派<p />
+				<input type="radio" name="sidemeal" value="50" /> 冰炫風<p />
+				飲料:<p />
+				<input type="radio" name="beverage" value="30"> 大可樂<p />
+				<input type="radio" name="beverage" value="30"> 大雪碧<p />
+				<input type="radio" name="beverage" value="40"> 冰咖啡<p />
+				<input type="radio" name="beverage" value="55"> 玉米湯<p />
+				付款金額: <input type="number" name="amount" placeholder="請輸入付款金額" 
+							  min="1"  required /><p />
+				<button type="submit">訂餐</button>
+			</fieldset>
+		</form>
+	</body>
+</html>
