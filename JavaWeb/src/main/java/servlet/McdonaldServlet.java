@@ -43,5 +43,6 @@ public class McdonaldServlet extends HttpServlet {
 			resp.getWriter().print("付款金額:" + paymentAmount + "<p />");
 			resp.getWriter().print("不足金額:" + Math.abs(change) + "<p />");
 		}
+		
 	}
 }
