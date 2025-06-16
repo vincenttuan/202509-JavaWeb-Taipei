@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Tea;
 
-@WebServlet("/tea")
+@WebServlet("/tea") // <-- Servlet path
 public class TeaServlet extends HttpServlet {
 	// 商品資訊
 	private Map<String, Tea> teasMap = Map.of(
@@ -19,6 +19,12 @@ public class TeaServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("id");
+		String isHot = req.getParameter("isHot");
+		String sweetness = req.getParameter("sweetness");
+		String bag = req.getParameter("bag");
+		String amount = req.getParameter("amount");
+		
 		
 	}
 	
