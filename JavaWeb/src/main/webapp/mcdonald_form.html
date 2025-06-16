@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 		<link rel="stylesheet" href="/JavaWeb/css/buttons.css">
 		<script>
+			// 計算應付金額
 			function calculateTotal() {
 				// 取得選中的主餐價格
 				let mainmeal = document.querySelector('input[name="mainmeal"]:checked').value;
@@ -18,7 +19,8 @@
 				// 將應付金額顯示在 <span id="totalPrice"> 標籤中
 				document.getElementById('totalPrice').innerText = total;
 			}	
-		
+			
+			// 網頁載入完成時所會執行的方法
 			window.onload = function() {
 				// 針對每一個 radio 加入 change 事件
 				let radios = document.querySelectorAll('input[type="radio"]');
