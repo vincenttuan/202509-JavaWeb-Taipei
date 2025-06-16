@@ -5,6 +5,9 @@
 		<title>麥當勞</title>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 		<link rel="stylesheet" href="/JavaWeb/css/buttons.css">
+		<script>
+			
+		</script>
 	</head>
 	<body style="padding: 20px">
 		<form class="pure-form" action="/JavaWeb/mcdonald">
@@ -37,6 +40,7 @@
 					</tr>
 					<tr>
 						<td colspan="3">
+							應付金額 💵: <span id="totalPrice">0</span> 
 							付款金額 💵: <input type="number" name="amount" placeholder="請輸入付款金額" 
 										  min="1"  required /><p />
 							<button class="button-success pure-button" type="submit">訂餐 😋</button>
