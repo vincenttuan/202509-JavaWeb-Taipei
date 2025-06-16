@@ -6,7 +6,27 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 		<link rel="stylesheet" href="/JavaWeb/css/buttons.css">
 		<script>
-			
+			function calculateTotal() {
+				// 取得選中的主餐價格
+				let mainmeal = document.querySelector('input[name="mainmeal"]:checked').value;
+				// 取得選中的副餐價格
+				let sidemeal = document.querySelector('input[name="sidemeal"]:checked').value;
+				// 取得選中的飲料價格
+				let beverage = document.querySelector('input[name="beverage"]:checked').value;
+				// 計算應付金額
+				let total = parseInt(mainmeal) + parseInt(sidemeal) + parseInt(beverage);
+				// 將應付金額顯示在 <span id="totalPrice"> 標籤中
+				document.getElementById('totalPrice').innerText = total;
+			}	
+		
+			window.onload = function() {
+				// 針對每一個 radio 加入 change 事件
+				let radios = document.querySelectorAll('input[type="radio"]');
+				radios.forEach(function(radio) {
+					radio.addEventListener('change', calculateTotal);
+				});
+				calculateTotal();
+			};
 		</script>
 	</head>
 	<body style="padding: 20px">
