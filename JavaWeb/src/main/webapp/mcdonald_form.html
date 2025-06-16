@@ -19,7 +19,12 @@
 				// 判斷
 				if(amount < total) {
 					//alert('付款金額不足:\n不足金額 $' + (total - amount));
-					
+					Swal.fire({
+						icon: 'error', 
+						title: '付款金額不足',
+						text: '不足金額 $' + (total - amount),
+						confirmButtonText: '請重新輸入'
+					});
 					return false;
 				} else {
 					return true;
