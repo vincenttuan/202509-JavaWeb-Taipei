@@ -19,11 +19,20 @@ public class TeaServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html;charset=UTF-8");
+		// 取得傳來的參數(接收參數)
 		String id = req.getParameter("id");
 		String isHot = req.getParameter("isHot");
 		String sweetness = req.getParameter("sweetness");
 		String bag = req.getParameter("bag");
 		String amount = req.getParameter("amount");
+		// 印出參數
+		resp.getWriter().print("印出參數:<br />");
+		resp.getWriter().print("id:" + id + "<br />");
+		resp.getWriter().print("isHot:" + isHot + "<br />");
+		resp.getWriter().print("sweetness:" + sweetness + "<br />");
+		resp.getWriter().print("bag:" + bag + "<br />");
+		resp.getWriter().print("amount:" + amount + "<br />");
 		
 		
 	}
