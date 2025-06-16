@@ -6,6 +6,23 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 		<link rel="stylesheet" href="/JavaWeb/css/buttons.css">
 		<script>
+			// 應付金額
+			let total = 0;
+			
+			// 驗證金額
+			function validateAmount() {
+				// 取得付款金額
+				let amount = document.getElementById('amount').value;
+				amount = parseInt(amount);
+				// 判斷
+				if(amount < total) {
+					alert('付款金額不足:\n不足金額 $' + (total - amount));
+					return false;
+				} else {
+					return true;
+				}
+			}
+			
 			// 計算應付金額
 			function calculateTotal() {
 				// 取得選中的主餐價格
@@ -15,7 +32,7 @@
 				// 取得選中的飲料價格
 				let beverage = document.querySelector('input[name="beverage"]:checked').value;
 				// 計算應付金額
-				let total = parseInt(mainmeal) + parseInt(sidemeal) + parseInt(beverage);
+				total = parseInt(mainmeal) + parseInt(sidemeal) + parseInt(beverage);
 				// 將應付金額顯示在 <span id="totalPrice"></span> 標籤中
 				document.getElementById('totalPrice').innerText = total;
 			}	
@@ -32,7 +49,7 @@
 		</script>
 	</head>
 	<body style="padding: 20px">
-		<form class="pure-form" action="/JavaWeb/mcdonald">
+		<form class="pure-form" action="/JavaWeb/mcdonald" onsubmit="return validateAmount();">
 			<fieldset>
 				<legend>🍔 麥當勞點餐 🍟</legend>
 				<table>
