@@ -3,9 +3,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Tea Form</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 	</head>
-	<body>
-		<form action="/JavaWeb/tea">
+	<body style="padding: 20px">
+		<form class="pure-form" action="/JavaWeb/tea">
 			<fieldset>
 				<legend>Tea Form</legend>
 				飲品: <input type="radio" name="id" value="A01" />紅茶
@@ -20,7 +21,7 @@
 				提袋: <input type="checkbox" name="bag" value="1" /> 提袋<p />
 				數量: <input type="number" min="1" max="99" name="amount" 
 				            placeholder="請輸入數量" required /><p />
-				<button type="submit">送出</button>
+				<button type="submit" class="pure-button pure-button-primary" >送出</button>
 			</fieldset>
 		</form>
 	</body>
