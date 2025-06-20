@@ -47,9 +47,9 @@ public class BreakfastServlet extends HttpServlet {
 		
 		resp.getWriter().print("早餐資訊:<br />");
 		for(Entry<String, Breakfast> item : breakfastMap.entrySet()) {
-			resp.getWriter().print("id:" + item.getValue().getId() + " ");
-			resp.getWriter().print("name:" + item.getValue().getName() + " ");
-			resp.getWriter().print("price: $" + item.getValue().getPrice() + " ");
+			resp.getWriter().print("編號:" + item.getValue().getId() + " ");
+			resp.getWriter().print("品名:" + item.getValue().getName() + " ");
+			resp.getWriter().print("價格: NT$" + item.getValue().getPrice() + " ");
 			resp.getWriter().print("<br />");
 		}
 		resp.getWriter().print("<hr />");
