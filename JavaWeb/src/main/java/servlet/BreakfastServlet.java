@@ -44,6 +44,10 @@ public class BreakfastServlet extends HttpServlet {
 		String egg = req.getParameter("egg");
 		String amount = req.getParameter("amount");
 		
+		resp.getWriter().print("早餐資訊:");
+		resp.getWriter().print(breakfastMap);
+		resp.getWriter().print("<hr />");
+		
 		resp.getWriter().print("主餐:");
 		resp.getWriter().print(Arrays.toString(mains));
 		resp.getWriter().print("<p />");
