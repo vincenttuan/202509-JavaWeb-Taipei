@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,17 +16,17 @@ public class BreakfastServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=utf-8");
 		
-		String main = req.getParameter("main");
-		String beverage = req.getParameter("beverage");
+		String[] mains = req.getParameterValues("main");
+		String[] beverages = req.getParameterValues("beverage");
 		String egg = req.getParameter("egg");
 		String amount = req.getParameter("amount");
 		
 		resp.getWriter().print("主餐:");
-		resp.getWriter().print(main);
+		resp.getWriter().print(Arrays.toString(mains));
 		resp.getWriter().print("<p />");
 		
 		resp.getWriter().print("飲料:");
-		resp.getWriter().print(beverage);
+		resp.getWriter().print(Arrays.toString(beverages));
 		resp.getWriter().print("<p />");
 		
 		resp.getWriter().print("加蛋:");
