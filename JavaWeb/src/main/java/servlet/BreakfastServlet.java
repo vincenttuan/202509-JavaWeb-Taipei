@@ -62,28 +62,36 @@ public class BreakfastServlet extends HttpServlet {
 		resp.getWriter().print("</table>");
 		resp.getWriter().print("<hr />");
 		
+		int total = 0;
 		resp.getWriter().print("主餐:");
 		for(String id : mains) {
 			resp.getWriter().print(id + ":" + breakfastMap.get(id).getName() + " ");
+			total += breakfastMap.get(id).getPrice(); // 累加
 		}
 		resp.getWriter().print("<p />");
 		
 		resp.getWriter().print("飲料:");
 		for(String id : beverages) {
 			resp.getWriter().print(id + ":" + breakfastMap.get(id).getName());
+			total += breakfastMap.get(id).getPrice(); // 累加
 		}
 		resp.getWriter().print("<p />");
 		
 		resp.getWriter().print("加蛋:");
 		if(egg != null) {
 			resp.getWriter().print(egg + ":" + breakfastMap.get(egg).getName());
+			total += breakfastMap.get(egg).getPrice(); // 累加
 		}
 		resp.getWriter().print("<p />");
 		
 		resp.getWriter().print("數量:");
 		resp.getWriter().print(amount);
+		total *= Integer.parseInt(amount); // * 數量
 		resp.getWriter().print("<p />");
 		
+		resp.getWriter().print("總價:");
+		resp.getWriter().print(total);
+		resp.getWriter().print("<p />");
 	}
 	
 }
