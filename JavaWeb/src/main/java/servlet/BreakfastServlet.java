@@ -46,7 +46,7 @@ public class BreakfastServlet extends HttpServlet {
 		String amount = req.getParameter("amount");
 		
 		resp.getWriter().print("早餐資訊:<br />");
-		resp.getWriter().print("<table border=1>");
+		resp.getWriter().print("<table border='1' cellpadding='2' cellspacing='0'>");
 		resp.getWriter().print("<tr>");
 		resp.getWriter().print("<th>編號</th>");
 		resp.getWriter().print("<th>品名</th>");
@@ -56,7 +56,7 @@ public class BreakfastServlet extends HttpServlet {
 			resp.getWriter().print("<tr>");
 			resp.getWriter().print("<td>" + item.getValue().getId() + "</td>");
 			resp.getWriter().print("<td>" + item.getValue().getName() + "</td>");
-			resp.getWriter().print("<td>" + item.getValue().getPrice() + "</td>");
+			resp.getWriter().print("<td align='right'>" + item.getValue().getPrice() + "</td>");
 			resp.getWriter().print("</tr>");
 		}
 		resp.getWriter().print("</table>");
