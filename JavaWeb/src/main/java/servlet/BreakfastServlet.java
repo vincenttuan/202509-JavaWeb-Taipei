@@ -63,15 +63,21 @@ public class BreakfastServlet extends HttpServlet {
 		resp.getWriter().print("<hr />");
 		
 		resp.getWriter().print("主餐:");
-		resp.getWriter().print(Arrays.toString(mains));
+		for(String id : mains) {
+			resp.getWriter().print(id + ":" + breakfastMap.get(id).getName() + " ");
+		}
 		resp.getWriter().print("<p />");
 		
 		resp.getWriter().print("飲料:");
-		resp.getWriter().print(Arrays.toString(beverages));
+		for(String id : beverages) {
+			resp.getWriter().print(id + ":" + breakfastMap.get(id).getName());
+		}
 		resp.getWriter().print("<p />");
 		
 		resp.getWriter().print("加蛋:");
-		resp.getWriter().print(egg);
+		if(egg != null) {
+			resp.getWriter().print(egg + ":" + breakfastMap.get(egg).getName());
+		}
 		resp.getWriter().print("<p />");
 		
 		resp.getWriter().print("數量:");
