@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
 import jakarta.servlet.ServletException;
@@ -45,7 +46,10 @@ public class BreakfastServlet extends HttpServlet {
 		String amount = req.getParameter("amount");
 		
 		resp.getWriter().print("早餐資訊:");
-		resp.getWriter().print(breakfastMap);
+		for(Entry<String, Breakfast> item : breakfastMap.entrySet()) {
+			resp.getWriter().print(item);
+			resp.getWriter().print("<br />");
+		}
 		resp.getWriter().print("<hr />");
 		
 		resp.getWriter().print("主餐:");
