@@ -13,6 +13,28 @@ public class BreakfastServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html;charset=utf-8");
+		
+		String main = req.getParameter("main");
+		String beverage = req.getParameter("beverage");
+		String egg = req.getParameter("egg");
+		String amount = req.getParameter("amount");
+		
+		resp.getWriter().print("主餐:");
+		resp.getWriter().print(main);
+		resp.getWriter().print("<p />");
+		
+		resp.getWriter().print("飲料:");
+		resp.getWriter().print(beverage);
+		resp.getWriter().print("<p />");
+		
+		resp.getWriter().print("加蛋:");
+		resp.getWriter().print(egg);
+		resp.getWriter().print("<p />");
+		
+		resp.getWriter().print("數量:");
+		resp.getWriter().print(amount);
+		resp.getWriter().print("<p />");
 		
 	}
 	
