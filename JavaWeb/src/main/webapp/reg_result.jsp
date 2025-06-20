@@ -12,8 +12,8 @@
 		<div class="pure-form">
 			<fieldset>
 				<legend>報名結果</legend>
-				姓名: ${ name }
-				電話: ${ phone }
+				姓名: ${ name }<p />
+				電話: ${ phone }<p />
 				報名成功 !
 			</fieldset>
 		</div>
