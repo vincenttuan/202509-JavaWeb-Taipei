@@ -6,7 +6,25 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 		<link rel="stylesheet" href="/JavaWeb/css/buttons.css">
 	</head>
-	<body>
+	<body style="padding: 20px">
 		
+		<form method="post" action="/JavaWeb/breakfast">
+			<fieldset>
+				<legend>🍽 早餐訂購單</legend>
+				主餐: 
+					<input type="radio" name="main" value="M01" checked />🍔 漢堡
+					<input type="radio" name="main" value="M02" />🥪 三明治
+					<input type="radio" name="main" value="M03" />🥞 蛋餅 <p />
+				飲料:
+					<input type="radio" name="beverage" value="B01" checked />🥤 紅茶
+					<input type="radio" name="beverage" value="B02" />🥛 豆漿	<p />
+				加蛋:
+					<input type="checkbox" name="egg" value="E01" />🥚 加蛋 <p />
+				數量:
+					<input type="number" min="1" max="99" 
+						   name="amount" placeholder="請輸入數量" required /><p />
+				<button type="submit" class="pure-class">送出 🛒</button>	
+			</fieldset>
+		</form>
 	</body>
 </html>
