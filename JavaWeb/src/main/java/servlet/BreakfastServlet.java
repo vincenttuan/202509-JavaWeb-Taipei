@@ -46,12 +46,20 @@ public class BreakfastServlet extends HttpServlet {
 		String amount = req.getParameter("amount");
 		
 		resp.getWriter().print("早餐資訊:<br />");
+		resp.getWriter().print("<table border=1>");
+		resp.getWriter().print("<tr>");
+		resp.getWriter().print("<th>編號</th>");
+		resp.getWriter().print("<th>品名</th>");
+		resp.getWriter().print("<th>價格 NT$</th>");
+		resp.getWriter().print("</tr>");
 		for(Entry<String, Breakfast> item : breakfastMap.entrySet()) {
-			resp.getWriter().print("編號:" + item.getValue().getId() + " ");
-			resp.getWriter().print("品名:" + item.getValue().getName() + " ");
-			resp.getWriter().print("價格: NT$" + item.getValue().getPrice() + " ");
-			resp.getWriter().print("<br />");
+			resp.getWriter().print("<tr>");
+			resp.getWriter().print("<td>" + item.getValue().getId() + "</td>");
+			resp.getWriter().print("<td>" + item.getValue().getName() + "</td>");
+			resp.getWriter().print("<td>" + item.getValue().getPrice() + "</td>");
+			resp.getWriter().print("</tr>");
 		}
+		resp.getWriter().print("</table>");
 		resp.getWriter().print("<hr />");
 		
 		resp.getWriter().print("主餐:");
