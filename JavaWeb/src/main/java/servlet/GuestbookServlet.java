@@ -5,6 +5,7 @@ import java.util.List;
 
 import dao.GuestbookDao;
 import dao.GuestbookDaoInMemory;
+import dao.GuestbookMySQL;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,7 +17,8 @@ import model.Guestbook;
 @WebServlet("/guestbook")
 public class GuestbookServlet extends HttpServlet {
 	
-	private GuestbookDao dao = new GuestbookDaoInMemory();
+	//private GuestbookDao dao = new GuestbookDaoInMemory();
+	private GuestbookDao dao = new GuestbookMySQL();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
