@@ -1,5 +1,11 @@
+<%@page import="model.Guestbook"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	// 取得 servlet 傳來的 guestbooks 資料
+	List<Guestbook> guestbooks = (List<Guestbook>)request.getAttribute("guestbooks");
+%>    
 <!DOCTYPE html>
 <html>
 	<head>
