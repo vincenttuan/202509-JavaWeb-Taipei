@@ -15,7 +15,7 @@ public class GuestbookServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 調用 guestbook.jsp
-		RequestDispatcher rd = req.getRequestDispatcher("guestbook.jsp");
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/guestbook.jsp");
 		rd.forward(req, resp);
 	}
 	
