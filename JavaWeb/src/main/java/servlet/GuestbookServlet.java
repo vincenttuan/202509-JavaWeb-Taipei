@@ -27,4 +27,14 @@ public class GuestbookServlet extends HttpServlet {
 		rd.forward(req, resp);
 	}
 	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String name = req.getParameter("name");
+		String message = req.getParameter("message");
+		// 儲存
+		dao.add(name, message);
+		// 重導到 /JavaWeb/guestbook
+		resp.sendRedirect("/JavaWeb/guestbook");
+	}
+	
 }
