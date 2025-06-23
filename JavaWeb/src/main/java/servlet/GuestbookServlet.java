@@ -33,7 +33,7 @@ public class GuestbookServlet extends HttpServlet {
 		String message = req.getParameter("message");
 		// 儲存
 		dao.add(name, message);
-		// 重導到 /JavaWeb/guestbook
+		// 重導到 /JavaWeb/guestbook <-- 網址 
 		resp.sendRedirect("/JavaWeb/guestbook");
 	}
 	
