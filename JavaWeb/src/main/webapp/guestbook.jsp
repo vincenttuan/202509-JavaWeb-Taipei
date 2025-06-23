@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>訪客留言版</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+	</head>
+	<body style="padding: 20px">
+		<form class="pure-form" method="post" action="/JavaWeb/guestbook">
+			<fieldset>
+				<legend>訪客留言</legend>
+				暱稱: <input type="text" name="name" placeholder="請輸入暱稱" required /><p />
+				留言: <input type="text" name="message" placeholder="請輸入留言" required /><p />
+				<button type="submit">送出</button>
+			</fieldset>
+		</form>
+		<div class="pure-form">
+			<fieldset>
+				<legend>留言紀錄</legend>
+				<table class="pure-table">
+					<thead>
+						<tr>
+							<th>序號</th><th>暱稱</th><th>留言</th><th>時間</th>
+						</tr>
+					</thead>
+					<tbody>
+						
+					</tbody>
+				</table>
+			</fieldset>
+		</div>
+	</body>
+</html>
