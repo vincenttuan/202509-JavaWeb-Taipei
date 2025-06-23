@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -39,8 +40,15 @@ public class GuestbookMySQL extends BaseDao implements GuestbookDao {
 
 	@Override
 	public void add(String name, String message) {
-		// TODO Auto-generated method stub
-		
+		String sql = "insert into guestbook(name, message) values(?, ?)";
+		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
+			pstmt.setString(1, name);
+			pstmt.setString(2, message);
+			// 儲存
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
