@@ -32,7 +32,14 @@
 						</tr>
 					</thead>
 					<tbody>
-						
+						<% for(Guestbook gb : guestbooks) { %>
+							<tr>
+								<td><%=gb.getId() %></td>
+								<td><%=gb.getName() %></td>
+								<td><%=gb.getMessage() %></td>
+								<td><%=gb.getCreateAt() %></td>
+							</tr>
+						<% } %>
 					</tbody>
 				</table>
 			</fieldset>
