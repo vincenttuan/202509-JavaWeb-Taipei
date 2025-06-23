@@ -12,7 +12,7 @@
 			<fieldset>
 				<legend>訪客留言</legend>
 				暱稱: <input type="text" name="name" placeholder="請輸入暱稱" required /><p />
-				留言: <input type="text" name="message" placeholder="請輸入留言" required /><p />
+				留言: <input type="text" name="message" placeholder="請輸入留言" required />
 				<button type="submit" class="pure-button pure-button-primary">送出</button>
 			</fieldset>
 		</form>
