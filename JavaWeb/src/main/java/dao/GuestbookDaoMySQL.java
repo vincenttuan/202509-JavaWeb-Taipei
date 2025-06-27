@@ -10,7 +10,7 @@ import java.util.List;
 
 import model.Guestbook;
 
-public class GuestbookMySQL extends BaseDao implements GuestbookDao {
+public class GuestbookDaoMySQL extends BaseDao implements GuestbookDao {
 
 	@Override
 	public List<Guestbook> findAll() {
