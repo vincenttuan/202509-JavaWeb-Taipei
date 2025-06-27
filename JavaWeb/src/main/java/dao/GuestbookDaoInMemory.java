@@ -35,5 +35,17 @@ public class GuestbookDaoInMemory implements GuestbookDao {
 	public void delete(Integer id) {
 		guestbooks.removeIf(gb -> gb.getId().equals(id));
 	}
+
+	@Override
+	public Guestbook get(Integer id) {
+		return guestbooks.stream().filter(gb -> gb.getId().equals(id)).findAny().orElseThrow();
+	}
+
+	@Override
+	public void update(Integer id, String name, String message) {
+		Guestbook gb = get(id);
+		gb.setName(name);
+		gb.setMessage(message);
+	}
 	
 }
