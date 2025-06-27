@@ -28,7 +28,7 @@
 				<table class="pure-table">
 					<thead>
 						<tr>
-							<th>序號</th><th>暱稱</th><th>留言</th><th>時間</th><th>刪除</th>
+							<th>序號</th><th>暱稱</th><th>留言</th><th>時間</th><th>刪除</th><th>修改</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -39,6 +39,7 @@
 								<td><%=gb.getMessage() %></td>
 								<td><%=gb.getCreateAt() %></td>
 								<td><a href="/JavaWeb/guestbook/delete?id=<%=gb.getId() %>">✂</a></td>
+								<td><a href="/JavaWeb/guestbook/update?id=<%=gb.getId() %>">📝</a></td>
 							</tr>
 						<% } %>
 					</tbody>
