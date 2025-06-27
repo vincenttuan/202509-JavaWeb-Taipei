@@ -87,7 +87,13 @@ public class GuestbookDaoMySQL extends BaseDao implements GuestbookDao {
 
 	@Override
 	public void update(Integer id, String name, String message) {
-		// TODO Auto-generated method stub
+		String sql = "update guestbook set name=?, message=? where id=?";
+		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
