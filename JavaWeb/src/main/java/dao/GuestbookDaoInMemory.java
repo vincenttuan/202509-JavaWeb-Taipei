@@ -30,5 +30,10 @@ public class GuestbookDaoInMemory implements GuestbookDao {
 		Guestbook guestbook = new Guestbook(nextId, name, message, createAt);
 		guestbooks.add(guestbook);
 	}
+
+	@Override
+	public void delete(Integer id) {
+		guestbooks.removeIf(gb -> gb.getId().equals(id));
+	}
 	
 }
