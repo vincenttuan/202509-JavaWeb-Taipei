@@ -28,7 +28,7 @@
 				<table class="pure-table">
 					<thead>
 						<tr>
-							<th>序號</th><th>暱稱</th><th>留言</th><th>時間</th>
+							<th>序號</th><th>暱稱</th><th>留言</th><th>時間</th><th>刪除</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -38,6 +38,7 @@
 								<td><%=gb.getName() %></td>
 								<td><%=gb.getMessage() %></td>
 								<td><%=gb.getCreateAt() %></td>
+								<td>✂</td>
 							</tr>
 						<% } %>
 					</tbody>
