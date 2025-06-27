@@ -50,5 +50,18 @@ public class GuestbookMySQL extends BaseDao implements GuestbookDao {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public void delete(Integer id) {
+		String sql = "delete from guestbook where id=?";
+		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
+			pstmt.setInt(1, id);
+			// 刪除
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 }
