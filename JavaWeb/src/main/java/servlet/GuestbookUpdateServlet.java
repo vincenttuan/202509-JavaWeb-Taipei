@@ -30,7 +30,14 @@ public class GuestbookUpdateServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		// 取得表單資料
+		String id = req.getParameter("id");
+		String name = req.getParameter("name");
+		String message = req.getParameter("message");
+		// 修改
+		dao.update(Integer.valueOf(id), name, message);
+		// 重導到首頁
+		resp.sendRedirect("/JavaWeb/guestbook");
 	}
 	
 }
