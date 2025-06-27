@@ -63,5 +63,17 @@ public class GuestbookDaoMySQL extends BaseDao implements GuestbookDao {
 		}
 		
 	}
+
+	@Override
+	public Guestbook get(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update(Integer id, String name, String message) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
