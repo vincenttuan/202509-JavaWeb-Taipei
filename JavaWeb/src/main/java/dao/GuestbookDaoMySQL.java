@@ -66,8 +66,23 @@ public class GuestbookDaoMySQL extends BaseDao implements GuestbookDao {
 
 	@Override
 	public Guestbook get(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Guestbook guestbook = null;
+		String sql = "select id, name, message, create_at from guestbook where id=?";
+		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
+			pstmt.setInt(1, id);
+			try(ResultSet rs = pstmt.executeQuery()) {
+				if(rs.next()) { // 是否有資料
+					guestbook = new Guestbook();
+					guestbook.setId(rs.getInt("id"));
+					guestbook.setName(rs.getString("name"));
+					guestbook.setMessage(rs.getString("message"));
+					guestbook.setCreateAt(rs.getTimestamp("create_at"));
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return guestbook;
 	}
 
 	@Override
