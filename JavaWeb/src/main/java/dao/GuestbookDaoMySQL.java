@@ -89,12 +89,14 @@ public class GuestbookDaoMySQL extends BaseDao implements GuestbookDao {
 	public void update(Integer id, String name, String message) {
 		String sql = "update guestbook set name=?, message=? where id=?";
 		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
-			
-			
+			pstmt.setString(1, name);
+			pstmt.setString(2, message);
+			pstmt.setInt(3, id);
+			// 修改
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 }
