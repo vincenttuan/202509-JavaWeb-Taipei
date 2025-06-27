@@ -38,7 +38,7 @@
 								<td><%=gb.getName() %></td>
 								<td><%=gb.getMessage() %></td>
 								<td><%=gb.getCreateAt() %></td>
-								<td>✂</td>
+								<td><a href="/JavaWeb/guestbook/delete?id=<%=gb.getId() %>">✂</a></td>
 							</tr>
 						<% } %>
 					</tbody>
