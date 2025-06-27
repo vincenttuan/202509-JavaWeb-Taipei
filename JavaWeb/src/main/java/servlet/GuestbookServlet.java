@@ -25,8 +25,8 @@ public class GuestbookServlet extends HttpServlet {
 		List<Guestbook> guestbooks = dao.findAll(); // 取得訪客歷史留言紀錄
 		// 調用 guestbook.jsp
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/guestbook.jsp");
-		req.setAttribute("guestbooks", guestbooks);
-		rd.forward(req, resp);
+		req.setAttribute("guestbooks", guestbooks); // 將 guestbooks 資料帶給 jsp
+		rd.forward(req, resp); // 傳送
 	}
 	
 	@Override
