@@ -16,12 +16,12 @@ public class StudentRestServlet extends HttpServlet {
 		String json = """
 						[
 							{
-								'name': 'John',
-								'age': 18 
+								"name": "John",
+								"age": 18 
 							},
 							{
-								'name': 'Mary',
-								'age': 19 
+								"name": "Mary",
+								"age": 19 
 							}
 						]
 					  """;
