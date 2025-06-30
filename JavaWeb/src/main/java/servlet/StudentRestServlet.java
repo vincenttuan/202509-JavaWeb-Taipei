@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.google.gson.Gson;
 
@@ -18,9 +19,9 @@ public class StudentRestServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Student[] students = {
+		List<Student> students = List.of(
 				new Student("John", 19), new Student("Mary", 20), new Student("Candy", 21)
-		};
+		);
 		
 		String json = gson.toJson(students);
 		
