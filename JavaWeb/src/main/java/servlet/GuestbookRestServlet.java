@@ -48,7 +48,7 @@ public class GuestbookRestServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String pathInfo = req.getPathInfo();
 		resp.setContentType("application/json;charset=UTF-8");
-		if(pathInfo == null || pathInfo.equals("/")) {
+		if(pathInfo == null || pathInfo.equals("/") || pathInfo.equals("/*")) {
 			// 取得全部
 			List<Guestbook> guestbooks = dao.findAll();
 			String json = gson.toJson(guestbooks);
