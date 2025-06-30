@@ -40,7 +40,7 @@
 				data.forEach(student => {
 					const tr = document.createElement('tr'); // 建立 <tr> 標籤
 					tr.innerHTML = `<td>${student.name}</td><td>${student.age}</td>`;
-					tbody.appendChild(tr);
+					tbody.appendChild(tr); // 在 tbody 標籤中新增一列
 				});
 			})
 			.catch(error => { // 若沒有正確回應則會拿到 error 資訊 ?
