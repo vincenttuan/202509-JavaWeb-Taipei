@@ -76,7 +76,7 @@ public class GuestbookRestServlet extends HttpServlet {
 		// 進行新增
 		dao.add(gb.getName(), gb.getMessage());
 		// 回應狀態
-		resp.setStatus(HttpServletResponse.SC_CREATED);
+		resp.setStatus(HttpServletResponse.SC_CREATED); // SC: States Code
 	}
 	
 	
