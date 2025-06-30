@@ -31,7 +31,8 @@
 				return response.json(); // 將回應的資料轉 json 後送給下一個 then
 			})
 			.then(data => { // 若有正確回應則會拿到 data 資訊(這裡指的就是 json) ?
-				alert('學生 json 資料:\n' + data);
+				// JSON.stringify(data) 將 data(json 物件) 轉字串
+				alert('學生 json 資料:\n' + JSON.stringify(data));
 			})
 			.catch(error => { // 若沒有正確回應則會拿到 error 資訊 ?
 				alert('載入學生資料失敗: ' + error.message);
