@@ -37,6 +37,7 @@
 			})
 			.catch(error => { // 若沒有正確回應則會拿到 error 資訊 ?
 				alert('載入學生資料失敗: ' + error.message);
+				console.log('載入學生資料失敗', error.message);
 			});
 	</script>
 	
