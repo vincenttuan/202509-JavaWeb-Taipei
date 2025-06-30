@@ -66,10 +66,11 @@ public class GuestbookRestServlet extends HttpServlet {
 		}
 	}
 	
+	// 新增
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 新增
-		BufferedReader reader = req.getReader(); // 取得前端傳來的 json 物件
+		// 取得前端傳來的 json 物件
+		BufferedReader reader = req.getReader(); 
 		// reader(裡面是 json 物件) 轉 Guestbook 物件
 		Guestbook gb = gson.fromJson(reader, Guestbook.class);
 		// 進行新增
@@ -77,5 +78,7 @@ public class GuestbookRestServlet extends HttpServlet {
 		// 回應狀態
 		resp.setStatus(HttpServletResponse.SC_CREATED);
 	}
+	
+	
 	
 }
