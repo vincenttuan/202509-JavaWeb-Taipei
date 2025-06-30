@@ -25,7 +25,7 @@ public class StudentRestServlet extends HttpServlet {
 							}
 						]
 					  """;
-		resp.setContentType("application/json;charset=TUF-8");
+		resp.setContentType("application/json;charset=UTF-8");
 		resp.getWriter().print(json);
 	}
 	
