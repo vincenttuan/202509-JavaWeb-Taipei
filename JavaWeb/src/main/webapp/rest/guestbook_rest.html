@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>訪客留言版 (RESTful + Gson)</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+    <style>
+        #editModal {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 30%;
+            transform: translate(-50%, 0);
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            z-index: 1000;
+        }
+        #modalBackdrop {
+            display: none;
+            position: fixed;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.2);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body style="padding: 20px">
+<h2>訪客留言 (RESTful + Gson)</h2>
+<form id="addForm" class="pure-form">
+    <fieldset>
+        暱稱: <input type="text" name="name" required />
+        留言: <input type="text" name="message" required />
+        <button type="submit" class="pure-button pure-button-primary">送出</button>
+    </fieldset>
+</form>
+<div style="margin-top:20px;">
+    <fieldset>
+        <legend>留言紀錄</legend>
+        <table class="pure-table" id="guestbookTable">
+            <thead>
+                <tr>
+                    <th>序號</th><th>暱稱</th><th>留言</th><th>時間</th><th>刪除</th><th>修改</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 動態產生 -->
+            </tbody>
+        </table>
+    </fieldset>
+</div>
+
+<!--
+當你打開「編輯留言」的彈出視窗（Modal）時，
+這個 backdrop 會顯示在整個畫面上，
+讓背景變暗、不可點擊，
+強調彈窗內容，並防止使用者誤操作背景。
+ -->
+<div id="modalBackdrop"></div>
+<div id="editModal">
+    <form id="editForm" class="pure-form">
+        <input type="hidden" name="id" />
+        暱稱: <input type="text" name="name" required /><br/>
+        留言: <input type="text" name="message" required /><br/>
+        <button type="submit" class="pure-button pure-button-primary">修改</button>
+        <button type="button" onclick="closeModal()" class="pure-button">取消</button>
+    </form>
+</div>
+
+<script>
+const apiBase = '/JavaWeb/api/guestbook';
+
+function fetchGuestbooks() {
+    fetch(apiBase)
+        .then(res => res.json())
+        .then(data => {
+            const tbody = document.querySelector('#guestbookTable tbody');
+            tbody.innerHTML = '';
+            data.forEach(gb => {
+                tbody.innerHTML += `
+                <tr>
+                    <td>${gb.id}</td>
+                    <td>${gb.name}</td>
+                    <td>${gb.message}</td>
+                    <td>${gb.createAt ? gb.createAt.replace('T', ' ').substring(0, 19) : ''}</td>
+                    <td><button onclick="deleteGuestbook(${gb.id})">✂</button></td>
+                    <td><button onclick="showEditModal(${gb.id}, '${escapeHtml(gb.name)}', '${escapeHtml(gb.message)}')">📝</button></td>
+                </tr>
+                `;
+            });
+        });
+}
+fetchGuestbooks();
+
+document.getElementById('addForm').onsubmit = function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = {
+        name: form.name.value,
+        message: form.message.value
+    };
+    fetch(apiBase, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    }).then(() => {
+        form.reset();
+        fetchGuestbooks();
+    });
+};
+
+function deleteGuestbook(id) {
+    if (confirm('確定要刪除嗎？')) {
+        fetch(apiBase + '/' + id, {method: 'DELETE'})
+            .then(() => fetchGuestbooks());
+    }
+}
+
+function showEditModal(id, name, message) {
+    const modal = document.getElementById('editModal');
+    const backdrop = document.getElementById('modalBackdrop');
+    modal.style.display = 'block';
+    backdrop.style.display = 'block';
+    modal.querySelector('input[name="id"]').value = id;
+    modal.querySelector('input[name="name"]').value = unescapeHtml(name);
+    modal.querySelector('input[name="message"]').value = unescapeHtml(message);
+}
+
+function closeModal() {
+    document.getElementById('editModal').style.display = 'none';
+    document.getElementById('modalBackdrop').style.display = 'none';
+}
+
+document.getElementById('editForm').onsubmit = function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const id = form.id.value;
+    const data = {
+        name: form.name.value,
+        message: form.message.value
+    };
+    fetch(apiBase + '/' + id, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    }).then(() => {
+        closeModal();
+        fetchGuestbooks();
+    });
+};
+
+// 防止 XSS
+function escapeHtml(text) {
+    return text.replace(/[&<>"']/g, function(m) {
+        return ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        })[m];
+    });
+}
+function unescapeHtml(text) {
+    return text.replace(/&amp;|&lt;|&gt;|&quot;|&#39;/g, function(m) {
+        return ({
+            '&amp;': '&',
+            '&lt;': '<',
+            '&gt;': '>',
+            '&quot;': '"',
+            '&#39;': "'"
+        })[m];
+    });
+}
+</script>
+</body>
+</html>
