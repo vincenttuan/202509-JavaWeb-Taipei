@@ -1,5 +1,6 @@
 package servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
 
@@ -63,6 +64,18 @@ public class GuestbookRestServlet extends HttpServlet {
 				resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
 			}
 		}
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 新增
+		BufferedReader reader = req.getReader(); // 取得前端傳來的 json 物件
+		// reader(裡面是 json 物件) 轉 Guestbook 物件
+		Guestbook gb = gson.fromJson(reader, Guestbook.class);
+		// 進行新增
+		dao.add(gb.getName(), gb.getMessage());
+		// 回應狀態
+		resp.setStatus(HttpServletResponse.SC_CREATED);
 	}
 	
 }
