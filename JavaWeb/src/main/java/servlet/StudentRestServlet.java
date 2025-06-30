@@ -17,11 +17,11 @@ public class StudentRestServlet extends HttpServlet {
 						[
 							{
 								"name": "John",
-								"age": 18 
+								"age": 19 
 							},
 							{
 								"name": "Mary",
-								"age": 19 
+								"age": 20 
 							}
 						]
 					  """;
