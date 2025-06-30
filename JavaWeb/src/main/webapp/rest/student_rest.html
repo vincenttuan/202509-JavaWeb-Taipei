@@ -25,13 +25,16 @@
 	<script type="text/javascript">
 		fetch('http://localhost:8080/JavaWeb/rest/student')
 			.then(response => {  // 是否有正確回應 ?
-				
+				if(!response.ok) {
+					throw new Error('網路回應錯誤');
+				}
+				return response.json; // 將回應的資料轉 json 後送給下一個 then
 			})
 			.then(data => { // 若有正確回應則會拿到 data 資訊(這裡指的就是 json) ?
-				
+				alert('學生 json 資料:\n' + data);
 			})
 			.catch(error => { // 若沒有正確回應則會拿到 error 資訊 ?
-				
+				alert('載入學生資料失敗: ' + error.message);
 			});
 	</script>
 	
