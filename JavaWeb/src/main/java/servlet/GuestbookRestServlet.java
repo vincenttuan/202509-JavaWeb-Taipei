@@ -79,6 +79,28 @@ public class GuestbookRestServlet extends HttpServlet {
 		resp.setStatus(HttpServletResponse.SC_CREATED); // SC: States Code
 	}
 	
+	// 修改
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String pathInfo = req.getPathInfo();
+		String id = pathInfo.substring(1);
+		BufferedReader reader = req.getReader(); 
+		Guestbook gb = gson.fromJson(reader, Guestbook.class);
+		// 進行修改
+		dao.update(Integer.valueOf(id), gb.getName(), gb.getMessage());
+		// 回應狀態
+		resp.setStatus(HttpServletResponse.SC_OK);
+	}
 	
+	// 刪除
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String pathInfo = req.getPathInfo();
+		String id = pathInfo.substring(1);
+		// 進行刪除
+		dao.delete(Integer.valueOf(id));
+		// 回應狀態
+		resp.setStatus(HttpServletResponse.SC_OK);
+	}
 	
 }
