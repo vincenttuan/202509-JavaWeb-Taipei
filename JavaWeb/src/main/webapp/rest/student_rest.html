@@ -28,7 +28,7 @@
 				if(!response.ok) {
 					throw new Error('網路回應錯誤');
 				}
-				return response.json; // 將回應的資料轉 json 後送給下一個 then
+				return response.json(); // 將回應的資料轉 json 後送給下一個 then
 			})
 			.then(data => { // 若有正確回應則會拿到 data 資訊(這裡指的就是 json) ?
 				alert('學生 json 資料:\n' + data);
