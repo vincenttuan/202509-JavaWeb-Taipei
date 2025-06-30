@@ -34,6 +34,14 @@
 				// JSON.stringify(data) 將 data(json 物件) 轉字串
 				alert('學生 json 資料:\n' + JSON.stringify(data));
 				console.log('學生 json 資料', JSON.stringify(data));
+				// 將 data 放入表格中 
+				const tbody = document.querySelector('#studentTable tbody');
+				tbody.innerHTML = ''; // 清空資料
+				data.forEach(student => {
+					const tr = document.createElement('tr'); // 建立 <tr> 標籤
+					tr.innerHTML = `<td>${student.name}</td><td>${student.age}</td>`;
+					tbody.appendChild(tr);
+				});
 			})
 			.catch(error => { // 若沒有正確回應則會拿到 error 資訊 ?
 				alert('載入學生資料失敗: ' + error.message);
