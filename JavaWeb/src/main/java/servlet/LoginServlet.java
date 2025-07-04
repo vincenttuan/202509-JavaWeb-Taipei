@@ -22,6 +22,10 @@ public class LoginServlet extends HttpServlet {
 		if(!(username.equals("admin") && password.equals("1234"))) {
 			// 登入失敗
 			resp.getWriter().print("登入失敗");
+			HttpSession session = req.getSession(false);
+			if(session != null) {
+				session.invalidate();
+			}
 			return;
 		}
 		resp.getWriter().print("登入成功 <p />");
