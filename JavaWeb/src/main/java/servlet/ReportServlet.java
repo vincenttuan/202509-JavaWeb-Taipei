@@ -22,8 +22,8 @@ public class ReportServlet extends HttpServlet {
 			resp.getWriter().print("此為會員專屬報告請先登入!");
 			return;
 		}
-		String username = session.getAttribute("username").toString();
 		
+		String username = session.getAttribute("username").toString();
 		// 此網頁必須要有會員登入才能看
 		resp.getWriter().print(username + "您好 !");
 		resp.getWriter().print("會員專屬報告:<p />");
