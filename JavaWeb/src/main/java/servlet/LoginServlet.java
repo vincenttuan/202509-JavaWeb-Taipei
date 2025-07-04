@@ -18,19 +18,19 @@ public class LoginServlet extends HttpServlet {
 		// 取得登入表單的 username / password
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
+		// 建立 session 並取得 sessionId
+		HttpSession session = req.getSession();
 		// 判斷
 		if(!(username.equals("admin") && password.equals("1234"))) {
 			// 登入失敗
 			resp.getWriter().print("登入失敗");
-			HttpSession session = req.getSession(false);
 			if(session != null) {
 				session.invalidate();
 			}
 			return;
 		}
 		resp.getWriter().print("登入成功 <p />");
-		// 建立 session 並取得 sessionId
-		HttpSession session = req.getSession();
+		session.setAttribute("username", username); // 將 username 存放到 session 屬性中
 		resp.getWriter().print("Session is new: " + session.isNew() + "<p />");
 		resp.getWriter().print("Session Id: " + session.getId() + "<p />");
 	}
