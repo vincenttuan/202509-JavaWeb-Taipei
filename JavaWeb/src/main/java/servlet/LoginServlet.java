@@ -15,20 +15,33 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html;charset=UTF-8");
-		// 取得登入表單的 username / password
+		// 取得登入表單的 username / password / code
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
+		String code = req.getParameter("code");
+		
 		// 建立 session 並取得 sessionId
 		HttpSession session = req.getSession();
-		// 判斷
+		// 判斷帳密 username & password
 		if(!(username.equals("admin") && password.equals("1234"))) {
 			// 登入失敗
-			resp.getWriter().print("登入失敗");
+			resp.getWriter().print("登入失敗 - 帳密錯誤");
 			if(session != null) {
 				session.invalidate();
 			}
 			return;
 		}
+		// 判斷驗證碼 code
+		String codeInSession = session.getAttribute("code").toString(); // 取得 session 屬性中的 code
+		if(!code.equals(codeInSession)) {
+			// 登入失敗
+			resp.getWriter().print("登入失敗 - 驗證碼錯誤");
+			if(session != null) {
+				session.invalidate();
+			}
+			return;
+		}
+		
 		resp.getWriter().print("登入成功 <p />");
 		session.setAttribute("username", username); // 將 username 存放到 session 屬性中
 		resp.getWriter().print("Session is new: " + session.isNew() + "<p />");
