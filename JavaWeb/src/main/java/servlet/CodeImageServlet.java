@@ -1,6 +1,7 @@
 package servlet;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -36,6 +37,21 @@ public class CodeImageServlet extends HttpServlet {
 		g.setColor(Color.YELLOW);
 		// 4. 塗滿背景
 		g.fillRect(0, 0, 80, 30);
+		// 5. 設定顏色
+		g.setColor(Color.BLACK);
+		// 6. 設定字型
+		g.setFont(new Font("Arial", Font.BOLD, 25));
+		// 7. 繪文字
+		g.drawString(code, 10, 23);
+		// 8. 加上干擾線 
+		g.setColor(Color.RED);
+		for(int i=0;i<15;i++) {
+			int x1 = random.nextInt(80);
+			int y1 = random.nextInt(30);
+			int x2 = random.nextInt(80);
+			int y2 = random.nextInt(30);
+			g.drawLine(x1, y1, x2, y2);
+		}
 		
 		// 設定回傳類型
 		resp.setContentType("image/png");
