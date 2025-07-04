@@ -18,11 +18,14 @@ public class ReportServlet extends HttpServlet {
 		
 		HttpSession session = req.getSession(false);
 		
-		if(session == null) {
+		if(session.getAttribute("username") == null) {
 			resp.getWriter().print("此為會員專屬報告請先登入!");
 			return;
 		}
+		String username = session.getAttribute("username").toString();
+		
 		// 此網頁必須要有會員登入才能看
+		resp.getWriter().print(username + "您好 !");
 		resp.getWriter().print("會員專屬報告:<p />");
 		resp.getWriter().print("明天放假一天");
 		
