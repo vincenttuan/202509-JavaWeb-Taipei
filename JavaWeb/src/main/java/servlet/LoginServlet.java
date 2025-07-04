@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
 			resp.getWriter().print("登入失敗");
 			return;
 		}
-		resp.getWriter().print("登入成功");
+		resp.getWriter().print("登入成功 <p />");
 		// 建立 session 並取得 sessionId
 		HttpSession session = req.getSession();
 		resp.getWriter().print("Session is new: " + session.isNew() + "<p />");
