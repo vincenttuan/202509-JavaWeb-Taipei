@@ -18,7 +18,7 @@ public class ReportServlet extends HttpServlet {
 		
 		HttpSession session = req.getSession(false);
 		
-		if(session.getAttribute("username") == null) {
+		if(session == null || session.getAttribute("username") == null) {
 			resp.getWriter().print("此為會員專屬報告請先登入!");
 			return;
 		}
