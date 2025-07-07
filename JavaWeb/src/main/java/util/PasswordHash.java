@@ -42,6 +42,10 @@ public class PasswordHash {
 		String hashPassword = getHashPassword(password);
 		System.out.println(hashPassword);
 		System.out.println(hashPassword.length());
+		
+		String inputPassword = "1234";
+		boolean check = checkPassword(inputPassword, hashPassword);
+		System.out.println(check);
 	}
 	
 }
