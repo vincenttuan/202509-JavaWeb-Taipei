@@ -30,6 +30,13 @@ public class PasswordHash {
 		return "";
 	}
 	
+	// 比對
+	public static boolean checkPassword(String inputPassword, String storedHash) {
+		String inputHash = getHashPassword(inputPassword);
+		return inputHash.equals(storedHash);
+	}
+	
+	
 	public static void main(String[] args) {
 		String password = "1234";
 		String hashPassword = getHashPassword(password);
