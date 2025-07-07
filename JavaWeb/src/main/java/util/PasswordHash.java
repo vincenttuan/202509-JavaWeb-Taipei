@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 public class PasswordHash {
 	
 	// 密碼雜湊函式
-	public static String hashPassword(String password) {
+	public static String getHashPassword(String password) {
 		
 		try {
 			// 建立一個 SHA-256 的雜湊演算法實例
@@ -28,6 +28,12 @@ public class PasswordHash {
 			System.err.println("無此雜湊演算法");
 		}
 		return "";
+	}
+	
+	public static void main(String[] args) {
+		String password = "1234";
+		String hashPassword = getHashPassword(password);
+		System.out.println(hashPassword);
 	}
 	
 }
