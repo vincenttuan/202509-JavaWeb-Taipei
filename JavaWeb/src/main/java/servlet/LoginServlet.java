@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.User;
+import util.PasswordHash;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -38,15 +39,35 @@ public class LoginServlet extends HttpServlet {
 		
 		// 建立 session 並取得 sessionId
 		HttpSession session = req.getSession();
-		// 判斷帳密 username & password
-		if(!(username.equals("admin") && password.equals("1234"))) {
+		
+		// 判斷帳號 username
+		User user = users.stream()
+				.filter(u -> u.getUsername().equals(username))
+				.findFirst()
+				.orElse(null);
+		
+		if(user == null) {
 			// 登入失敗
-			resp.getWriter().print("登入失敗 - 帳密錯誤");
+			resp.getWriter().print("登入失敗 - 無此帳號");
 			if(session != null) {
 				session.invalidate();
 			}
 			return;
 		}
+		
+		// 判斷密碼 password
+		boolean passwordMatch = PasswordHash.checkPassword(password, user.getSalt(), user.getHash());
+		if(!passwordMatch) {
+			// 登入失敗
+			resp.getWriter().print("登入失敗 - 密碼錯誤");
+			if(session != null) {
+				session.invalidate();
+			}
+			return;
+		}
+		
+		
+		
 		// 判斷驗證碼 code
 		String codeInSession = session.getAttribute("code").toString(); // 取得 session 屬性中的 code
 		if(!code.equals(codeInSession)) {
