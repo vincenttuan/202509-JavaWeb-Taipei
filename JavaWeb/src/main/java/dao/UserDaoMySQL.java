@@ -62,7 +62,7 @@ public class UserDaoMySQL extends BaseDao implements UserDao {
 		String salt = PasswordHash.generateSalt();
 		String hash = PasswordHash.getHashPassword(newPassword, salt);
 		
-		String sql = "update user set salt=? hash=? where username=?";
+		String sql = "update user set salt=?, hash=? where username=?";
 		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
 			pstmt.setString(1, salt);
 			pstmt.setString(2, hash);
