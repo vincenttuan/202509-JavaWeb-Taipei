@@ -47,7 +47,7 @@ public class UserChangePasswordServlet extends HttpServlet {
 		
 		// 1. 請先確認 oldPassword 是否正確(Homework)
 		
-		// 2. 進行密碼
+		// 2. 密碼修改
 		userDao.updatePassword(username, newPassword);
 		resp.getWriter().print("密碼修改成功 !");
 		
