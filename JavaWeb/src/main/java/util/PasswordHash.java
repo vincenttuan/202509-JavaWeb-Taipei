@@ -34,6 +34,7 @@ public class PasswordHash {
 		String password = "1234";
 		String hashPassword = getHashPassword(password);
 		System.out.println(hashPassword);
+		System.out.println(hashPassword.length());
 	}
 	
 }
