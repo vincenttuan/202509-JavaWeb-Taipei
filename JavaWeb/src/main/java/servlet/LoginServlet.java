@@ -20,9 +20,9 @@ public class LoginServlet extends HttpServlet {
 	static {
 		users = new CopyOnWriteArrayList<>();
 		// 請先建立 3 個使用者其中 salt 與 hash 請透過 PasswordHash.java 得到
-		// 1.帳號: admin , 密碼: 1234, salt: hash:
-		// 2.帳號: john , 密碼: 1234, salt: hash:
-		// 3.帳號: mary , 密碼: 5678, salt: hash:
+		// 1.帳號: admin, 密碼: 1234, salt: oKbdpbcvQqP+Oa+Uy0XjdA==, hash: e8c929460c099c457a06a70050e5b0e339bf3cd9841acb2ce57765a1b837f856
+		// 2.帳號: john,  密碼: 1234, salt: rLky4w7gGHvtwy7TCklMOA==, hash: 6d894de2d714f161cc943c841717f5dfb1c37f63b235e1e6efe0d49559affb8e
+		// 3.帳號: mary,  密碼: 5678, salt: FZWu03S4tEt/S1gZ63J89Q==, hash: 2fdaed2d97b89351858d82a6358cb8f6e759ef1e7c1bb59d783851f542f5abcb
 		
 	}
 	
