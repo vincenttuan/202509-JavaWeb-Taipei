@@ -66,8 +66,6 @@ public class LoginServlet extends HttpServlet {
 			return;
 		}
 		
-		
-		
 		// 判斷驗證碼 code
 		String codeInSession = session.getAttribute("code").toString(); // 取得 session 屬性中的 code
 		if(!code.equals(codeInSession)) {
