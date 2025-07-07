@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,9 +10,21 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.User;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+	
+	private static List<User> users;
+	
+	static {
+		users = new CopyOnWriteArrayList<>();
+		// 請先建立 3 個使用者其中 salt 與 hash 請透過 PasswordHash.java 得到
+		// 1.帳號: admin , 密碼: 1234, salt: hash:
+		// 2.帳號: john , 密碼: 1234, salt: hash:
+		// 3.帳號: mary , 密碼: 5678, salt: hash:
+		
+	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
