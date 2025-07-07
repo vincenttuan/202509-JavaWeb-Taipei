@@ -52,8 +52,9 @@ public class PasswordHash {
 	public static void main(String[] args) {
 		String password = "1234";
 		String salt = generateSalt();
+		System.out.println("salt:" + salt);
 		String storePassword = getHashPassword(password, salt);
-		System.out.println(storePassword);
+		System.out.println("hash:" + storePassword);
 		System.out.println(storePassword.length());
 		
 		String inputPassword = "1234";
