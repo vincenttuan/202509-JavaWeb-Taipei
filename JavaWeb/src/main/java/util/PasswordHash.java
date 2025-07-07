@@ -39,12 +39,12 @@ public class PasswordHash {
 	
 	public static void main(String[] args) {
 		String password = "1234";
-		String hashPassword = getHashPassword(password);
-		System.out.println(hashPassword);
-		System.out.println(hashPassword.length());
+		String storePassword = getHashPassword(password);
+		System.out.println(storePassword);
+		System.out.println(storePassword.length());
 		
 		String inputPassword = "1234";
-		boolean check = checkPassword(inputPassword, hashPassword);
+		boolean check = checkPassword(inputPassword, storePassword);
 		System.out.println(check);
 	}
 	
