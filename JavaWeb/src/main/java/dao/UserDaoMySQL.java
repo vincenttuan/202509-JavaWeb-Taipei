@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.User;
@@ -34,7 +35,9 @@ public class UserDaoMySQL extends BaseDao implements UserDao {
 
 	@Override
 	public List<User> findAllUsers() {
-		return null;
+		List<User> users = new ArrayList<>();
+		
+		return users;
 	}
 	
 }
