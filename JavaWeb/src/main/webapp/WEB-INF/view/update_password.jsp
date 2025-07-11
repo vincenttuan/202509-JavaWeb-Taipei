@@ -23,12 +23,25 @@
 		<script type="text/javascript">
 			// 檢驗密碼資訊
 			function checkPassword() {
-				
+				const oldPwd = document.getElementById('oldPassword').value();
+				const newPwd = document.getElementById('newPassword').value();
+				const confirmPwd = document.getElementById('confirmPassword').value();
+				// 新密碼不可以等於舊密碼
+				if(oldPwd == newPwd) {
+					alert('新密碼不可以等於舊密碼');
+					return false;
+				}
+				// 二次新密碼必須相等
+				if(newPwd != confirmPwd) {
+					alert('二次新密碼必須相等');
+					return false;
+				}
+				return true;
 			}
 		</script>
 	</head>
 	<body>
-		<form class="pure-form login-form" method="post" action="/JavaWeb/user/change/password">
+		<form class="pure-form login-form" onsubmit="return checkPassword()" method="post" action="/JavaWeb/user/change/password">
 			<fieldset>
 				<legend>修改密碼</legend>
 				👨‍⚕️ <%=session.getAttribute("username") %><p /> 
