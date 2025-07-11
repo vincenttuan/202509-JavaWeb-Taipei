@@ -65,6 +65,15 @@ public class LoginServlet extends HttpServlet {
 			return;
 		}
 		
+		// 判斷 session 是否有 requestUrl 屬性資料
+		if(session.getAttribute("requestUrl") != null) {
+			// 重導網址
+			resp.sendRedirect(session.getAttribute("requestUrl").toString());
+			// 清除 requestUrl
+			session.setAttribute("requestUrl", null);
+			return;
+		}
+		
 		resp.getWriter().print("登入成功 <p />");
 		session.setAttribute("username", username); // 將 username 存放到 session 屬性中
 		resp.getWriter().print("Session is new: " + session.isNew() + "<p />");
