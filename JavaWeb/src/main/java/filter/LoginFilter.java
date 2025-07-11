@@ -14,6 +14,9 @@ public class LoginFilter extends HttpFilter {
 	@Override
 	protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		response.getWriter().print("Forbidden !");
+		//response.getWriter().print("Forbidden !");
+		
+		// 放行指令
+		chain.doFilter(request, response);
 	}
 }
