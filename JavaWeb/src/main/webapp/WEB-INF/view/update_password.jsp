@@ -20,15 +20,21 @@
 	            background: #fff;
 	        }
 		</style>
+		<script type="text/javascript">
+			// 檢驗密碼資訊
+			function checkPassword() {
+				
+			}
+		</script>
 	</head>
 	<body>
 		<form class="pure-form login-form" method="post" action="/JavaWeb/user/change/password">
 			<fieldset>
 				<legend>修改密碼</legend>
 				👨‍⚕️ <%=session.getAttribute("username") %><p /> 
-				🔐 <input type="password" name="oldPassword" placeholder="請輸入舊密碼" required /><p />
-				🔐 <input type="password" name="newPassword" placeholder="請輸入新密碼" required /><p />
-				🔐 <input type="password" name="confirmPassword" placeholder="請再輸入一次新密碼" required /><p />
+				🔐 <input type="password" id="oldPassword" name="oldPassword" placeholder="請輸入舊密碼" required /><p />
+				🔐 <input type="password" id="newPassword" name="newPassword" placeholder="請輸入新密碼" required /><p />
+				🔐 <input type="password" id="confirmPassword" name="confirmPassword" placeholder="請再輸入一次新密碼" required /><p />
 				<button type="submit" class="pure-button pure-button-primary">傳送</button>
 			</fieldset>‍
 		</form>
