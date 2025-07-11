@@ -53,6 +53,7 @@ public class UserChangePasswordServlet extends HttpServlet {
 		String oldHash = user.getHash();
 		if(!PasswordHash.checkPassword(oldPassword, oldSalt, oldHash)) {
 			resp.getWriter().print("舊密碼不正確");
+			return;
 		}
 		
 		// 2. 密碼修改
