@@ -16,6 +16,8 @@ public class LoginFilter extends HttpFilter {
 	protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		
+		System.out.println(request.getRequestURL());
+		
 		// 判斷是否有登入 ?
 		HttpSession session = request.getSession(false);
 		if(session != null && session.getAttribute("username") != null) {
