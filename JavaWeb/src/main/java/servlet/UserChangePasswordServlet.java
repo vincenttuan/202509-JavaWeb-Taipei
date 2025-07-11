@@ -11,6 +11,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.User;
+import util.PasswordHash;
 
 @WebServlet("/user/change/password")
 public class UserChangePasswordServlet extends HttpServlet {
@@ -46,6 +48,12 @@ public class UserChangePasswordServlet extends HttpServlet {
 		String username = session.getAttribute("username").toString();
 		
 		// 1. 請先確認 oldPassword 是否正確(Homework)
+		User user = userDao.findByUsername(username);
+		String oldSalt = user.getSalt();
+		String oldHash = user.getHash();
+		if(!PasswordHash.checkPassword(oldPassword, oldSalt, oldHash)) {
+			resp.getWriter().print("舊密碼不正確");
+		}
 		
 		// 2. 密碼修改
 		userDao.updatePassword(username, newPassword);
