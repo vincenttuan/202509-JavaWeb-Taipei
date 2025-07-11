@@ -19,12 +19,14 @@ public class LoginFilter extends HttpFilter {
 		System.out.println(request.getRequestURL());
 		
 		// 判斷是否有登入 ?
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession();
 		if(session != null && session.getAttribute("username") != null) {
 			// 放行指令
 			chain.doFilter(request, response);
 		} else {
 			//response.getWriter().print("Forbidden ! Please login ~");
+			// 將目的地 url 存放在 session 屬性中
+			session.setAttribute("requestUrl", request.getRequestURL());
 			// 重導到登入頁面
 			response.sendRedirect("/JavaWeb/login.html");
 		}
