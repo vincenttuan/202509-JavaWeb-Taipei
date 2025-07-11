@@ -22,7 +22,9 @@ public class LoginFilter extends HttpFilter {
 			// 放行指令
 			chain.doFilter(request, response);
 		} else {
-			response.getWriter().print("Forbidden ! Please login ~");
+			//response.getWriter().print("Forbidden ! Please login ~");
+			// 重導到登入頁面
+			response.sendRedirect("/JavaWeb/login.html");
 		}
 		
 	}
