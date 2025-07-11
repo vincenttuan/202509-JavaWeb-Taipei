@@ -23,9 +23,9 @@
 		<script type="text/javascript">
 			// 檢驗密碼資訊
 			function checkPassword() {
-				const oldPwd = document.getElementById('oldPassword').value();
-				const newPwd = document.getElementById('newPassword').value();
-				const confirmPwd = document.getElementById('confirmPassword').value();
+				const oldPwd = document.getElementById('oldPassword').value;
+				const newPwd = document.getElementById('newPassword').value;
+				const confirmPwd = document.getElementById('confirmPassword').value;
 				// 新密碼不可以等於舊密碼
 				if(oldPwd == newPwd) {
 					alert('新密碼不可以等於舊密碼');
