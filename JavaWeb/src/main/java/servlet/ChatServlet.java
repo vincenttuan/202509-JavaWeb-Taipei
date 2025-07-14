@@ -26,6 +26,8 @@ public class ChatServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html;charset=utf-8");
+		
 		String message = req.getParameter("message");
 		String ollamaResponse = "";
 		
