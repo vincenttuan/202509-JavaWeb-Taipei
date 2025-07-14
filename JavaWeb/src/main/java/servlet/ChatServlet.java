@@ -77,7 +77,7 @@ public class ChatServlet extends HttpServlet {
 		// 分析 from: "content": to: }, 之間的內容
 		int from = sb.toString().indexOf("\"content\"");
 		int to = sb.toString().indexOf("},");
-		String content = sb.toString().substring(from, to);
+		String content = sb.toString().substring(from+11, to-1);
 		resp.getWriter().print(content);
 	}
 	
