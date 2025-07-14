@@ -1,6 +1,11 @@
 package servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -31,6 +36,30 @@ public class ChatServlet extends HttpServlet {
 				""";
 		payload = String.format(payload, message);
 		
+		// 1.發送 POST 請求到 ollama
+		// 1.1 建立連線
+		URL url = new URL("http://localhost:11434/api/chat");
+		HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+		// 1.2 連線設定
+		conn.setRequestMethod("POST");
+		conn.setRequestProperty("Content-Type", "application/json");
+		conn.setDoOutput(true);
+		// 1.3 資料送出
+		try(OutputStream os = conn.getOutputStream()) {
+			os.write(payload.getBytes("UTF-8"));
+		}
+		
+		// 2.讀取回應
+		StringBuffer sb = new StringBuffer();
+		try(BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"))) {
+			String line;
+			while ((line = br.readLine()) != null) {
+				sb.append(line);
+			}
+		}
+		
+		// 3.將結果資料傳給瀏覽器
+		resp.getWriter().print(sb.toString());
 		
 	}
 	
