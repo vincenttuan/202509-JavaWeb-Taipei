@@ -71,8 +71,12 @@ public class ChatServlet extends HttpServlet {
 		}
 		
 		// 3.將結果資料傳給瀏覽器
-		resp.getWriter().print(sb.toString());
-		
+		//resp.getWriter().print(sb.toString());
+		// 分析 from: "content": to: }, 之間的內容
+		int from = sb.toString().indexOf("\"content\"");
+		int to = sb.toString().indexOf("},");
+		String content = sb.toString().substring(from, to);
+		resp.getWriter().print(content);
 	}
 	
 }
