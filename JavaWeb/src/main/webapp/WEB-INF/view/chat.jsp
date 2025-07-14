@@ -14,7 +14,6 @@
 				您的問題: <input type="text" placeholder="請輸入問題" name="message" required /><p />
 				<button type="submit">詢問 AI</button>
 			</fieldset>
-			
 		</form>
 	</body>
 </html>
