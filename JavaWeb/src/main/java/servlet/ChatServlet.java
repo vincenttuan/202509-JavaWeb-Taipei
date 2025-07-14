@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,7 +19,9 @@ public class ChatServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.getWriter().print("chat ok");
+		//resp.getWriter().print("chat ok");
+		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/chat.jsp");
+		rd.forward(req, resp);
 	}
 	
 	@Override
