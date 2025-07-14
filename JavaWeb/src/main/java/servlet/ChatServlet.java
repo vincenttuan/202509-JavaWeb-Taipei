@@ -51,6 +51,10 @@ public class ChatServlet extends HttpServlet {
 		
 		// 2.讀取回應
 		StringBuffer sb = new StringBuffer();
+		// Java IO 串接鏈
+		// conn.getInputStream() -> byte stream 逐"位元組"讀取
+		// InputStreamReader     -> char stream 逐"字"讀取
+		// BufferedReader        -> 讀取到記憶體,可以逐"行"讀取(字串), 效率較高
 		try(BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"))) {
 			String line;
 			while ((line = br.readLine()) != null) {
