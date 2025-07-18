@@ -16,9 +16,11 @@
 		<table border="0">
 		<% for(Chat chat : chats) { %>
 			<tr>
-				<td><%=chat.getCreateTime() %></td>
+				<td width="150"><%=chat.getCreateTime() %></td>
 				<td><%=chat.getQuestion() %></td>
-				<td><%=chat.getAnswer().replace("\n", "<br />") %></td>
+			</tr>		
+			<tr>	
+				<td colspan="2"><%=chat.getAnswer().replace("\n", "<br />") %></td>
 			</tr>
 		<% } %>
 		</table>
