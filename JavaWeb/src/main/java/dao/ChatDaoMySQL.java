@@ -48,5 +48,16 @@ public class ChatDaoMySQL extends BaseDao implements ChatDao {
 		}
 		return chats;
 	}
+
+	@Override
+	public void delete(Integer id) {
+		String sql = "delete from chat where id=?";
+		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 }
