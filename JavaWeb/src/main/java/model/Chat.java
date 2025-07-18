@@ -2,6 +2,16 @@ package model;
 
 import java.util.Date;
 
+/*
+use web;
+create table if not exists chat(
+	id int auto_increment primary key,
+    username varchar(50) not null,
+    question text not null,
+    answer text not null,
+    create_time datetime default current_timestamp
+);
+*/
 public class Chat {
 	private Integer id; // 資料表會自動 +1 維護
 	private String username; // 提問者姓名
