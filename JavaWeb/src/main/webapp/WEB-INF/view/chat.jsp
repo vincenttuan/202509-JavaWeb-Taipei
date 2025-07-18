@@ -15,6 +15,6 @@
 				<button type="submit">詢問 AI</button>
 			</fieldset>
 		</form>
-		<iframe name="_result"></iframe>
+		<iframe name="_result" frameborder="0" width="1000"></iframe>
 	</body>
 </html>
