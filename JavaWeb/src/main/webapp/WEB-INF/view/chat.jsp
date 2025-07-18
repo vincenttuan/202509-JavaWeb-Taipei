@@ -11,7 +11,7 @@
 		<form class="pure-form" method="post" action="/JavaWeb/chat" target="_result">
 			<fieldset>
 				<legend>Chat</legend>
-				您的問題: <input type="text" placeholder="請輸入問題" name="message" required /><p />
+				<%=session.getAttribute("username") %> 的問題: <input type="text" placeholder="請輸入問題" name="message" required /><p />
 				<button type="submit">詢問 AI</button>
 			</fieldset>
 		</form>
