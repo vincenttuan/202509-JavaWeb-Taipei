@@ -17,7 +17,7 @@
 		<% for(Chat chat : chats) { %>
 			<tr>
 				<td width="150"><%=chat.getCreateTime() %></td>
-				<td><%=chat.getQuestion() %></td>
+				<td style="color: red"><%=chat.getQuestion() %></td>
 			</tr>		
 			<tr>	
 				<td colspan="2"><%=chat.getAnswer().replace("\n", "<br />") %></td>

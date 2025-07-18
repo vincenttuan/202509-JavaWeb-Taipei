@@ -16,6 +16,6 @@
 				<a href="/JavaWeb/logout" class="pure-button">登出</a>
 			</fieldset>
 		</form>
-		<iframe name="_result" frameborder="0" width="1000"></iframe>
+		<iframe name="_result" frameborder="0" width="1000" height="2000"></iframe>
 	</body>
 </html>
