@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 import dao.ChatDao;
 import dao.ChatDaoMySQL;
@@ -16,6 +17,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.Chat;
 
 @WebServlet("/chat")
 public class ChatServlet extends HttpServlet {
@@ -92,7 +94,12 @@ public class ChatServlet extends HttpServlet {
 		chatDao.add(username, question, answer);
 		
 		// 5.將結果資料傳給瀏覽器
-		resp.getWriter().print(content);
+		//resp.getWriter().print(content);
+		// 6.取得該使用者的歷史對話紀錄 
+		List<Chat> chats = chatDao.queryByUsername(username);
+		req.setAttribute("chats", chats);
+		req.getRequestDispatcher("/WEB-INF/view/chat_result.jsp").forward(req, resp);
+		
 	}
 	
 }
