@@ -16,11 +16,14 @@
 		<table border="0">
 		<% for(Chat chat : chats) { %>
 			<tr>
-				<td width="150"><%=chat.getCreateTime() %></td>
-				<td style="color: red"><%=chat.getQuestion() %></td>
+				<td width="50" style="color: red" title="刪除">
+					<a href="/JavaWeb/chat/delete?id=<%=chat.getId() %>">✂</a>
+				</td>
+				<td width="100"><%=chat.getCreateTime() %></td>
+				<td style="color: blue"><%=chat.getQuestion() %></td>
 			</tr>		
 			<tr>	
-				<td colspan="2"><%=chat.getAnswer().replace("\n", "<br />") %></td>
+				<td colspan="3"><%=chat.getAnswer().replace("\n", "<br />") %></td>
 			</tr>
 		<% } %>
 		</table>
