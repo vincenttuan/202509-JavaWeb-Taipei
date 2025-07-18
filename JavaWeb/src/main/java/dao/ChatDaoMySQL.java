@@ -1,7 +1,9 @@
 package dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Chat;
@@ -23,8 +25,26 @@ public class ChatDaoMySQL extends BaseDao implements ChatDao {
 
 	@Override
 	public List<Chat> queryByUsername(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Chat> chats = new ArrayList<>();
+		String sql = "select id, username, question, answer, create_time from chat where username=?";
+		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
+			pstmt.setString(1, username);
+			
+			try(ResultSet rs = pstmt.executeQuery()) {
+				Chat chat = new Chat();
+				chat.setId(rs.getInt("id"));
+				chat.setUsername(rs.getString("username"));
+				chat.setQuestion(rs.getString("question"));
+				chat.setAnswer(rs.getString("answer"));
+				chat.setCreateTime(rs.getDate("create_time"));
+				// 加入到集合
+				chats.add(chat);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return chats;
 	}
 	
 }
