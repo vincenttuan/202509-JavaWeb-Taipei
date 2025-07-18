@@ -31,14 +31,16 @@ public class ChatDaoMySQL extends BaseDao implements ChatDao {
 			pstmt.setString(1, username);
 			
 			try(ResultSet rs = pstmt.executeQuery()) {
-				Chat chat = new Chat();
-				chat.setId(rs.getInt("id"));
-				chat.setUsername(rs.getString("username"));
-				chat.setQuestion(rs.getString("question"));
-				chat.setAnswer(rs.getString("answer"));
-				chat.setCreateTime(rs.getDate("create_time"));
-				// 加入到集合
-				chats.add(chat);
+				while(rs.next()) {
+					Chat chat = new Chat();
+					chat.setId(rs.getInt("id"));
+					chat.setUsername(rs.getString("username"));
+					chat.setQuestion(rs.getString("question"));
+					chat.setAnswer(rs.getString("answer"));
+					chat.setCreateTime(rs.getDate("create_time"));
+					// 加入到集合
+					chats.add(chat);
+				}
 			}
 			
 		} catch (SQLException e) {
