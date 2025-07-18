@@ -7,15 +7,20 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import dao.ChatDao;
+import dao.ChatDaoMySQL;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/chat")
 public class ChatServlet extends HttpServlet {
+	
+	private ChatDao chatDao = new ChatDaoMySQL();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -72,12 +77,21 @@ public class ChatServlet extends HttpServlet {
 			}
 		}
 		
-		// 3.將結果資料傳給瀏覽器
+		// 3.分析結果
 		//resp.getWriter().print(sb.toString());
 		// 分析 from: "content": to: }, 之間的內容
 		int from = sb.toString().indexOf("\"content\"");
 		int to = sb.toString().indexOf("},");
 		String content = sb.toString().substring(from+11, to-1);
+		
+		// 4.將對話結果存放到資料表中
+		HttpSession session = req.getSession(false);
+		String username = (String)session.getAttribute("username");
+		String question = message;
+		String answer = content;
+		chatDao.add(username, question, answer);
+		
+		// 5.將結果資料傳給瀏覽器
 		resp.getWriter().print(content);
 	}
 	
