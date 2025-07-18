@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Chat;
 
-@WebServlet(urlPatterns = {"/chat", "/chat/history"})
+@WebServlet(urlPatterns = {"/chat", "/chat/history", "/chat/delete"})
 public class ChatServlet extends HttpServlet {
 	
 	private ChatDao chatDao = new ChatDaoMySQL();
@@ -27,14 +27,18 @@ public class ChatServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//resp.getWriter().print("chat ok");
+		HttpSession session = req.getSession(false);
+		String username = session.getAttribute("username").toString();
+		
 		switch(req.getServletPath()) {
 			case "/chat":
 				RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/chat.jsp");
 				rd.forward(req, resp);
 				break;
+			case "/chat/delete":
+				Integer id = Integer.valueOf(req.getParameter("id"));
+				chatDao.delete(id);
 			case "/chat/history":	
-				HttpSession session = req.getSession(false);
-				String username = session.getAttribute("username").toString();
 				List<Chat> chats = chatDao.queryByUsername(username);
 				req.setAttribute("chats", chats);
 				req.getRequestDispatcher("/WEB-INF/view/chat_result.jsp").forward(req, resp);
