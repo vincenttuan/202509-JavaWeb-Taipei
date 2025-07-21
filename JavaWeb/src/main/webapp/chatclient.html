@@ -70,6 +70,21 @@
 				
 			}
 			
+			// 按下 onOpenBtn
+			onOpenBtn.addEventListener('click', function() {
+				setWebSocket(); // 啟動
+			});
+			
+			// 按下 onCloseBtn
+			onCloseBtn.addEventListener('click', function() {
+				webSocket.close(); // 離線
+			});
+			
+			// 按下 onMessageBtn
+			onMessageBtn.addEventListener('click', function() {
+				webSocket.send(messageInput.value);
+			});
+			
 			// 配置 WebSocket
 			setWebSocket();
 		}
