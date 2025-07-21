@@ -23,4 +23,22 @@
 			</div>
 		</div>
 	</body>
+	<script type="text/javascript">
+		function startup() {
+			const onOpenBtn = document.getElementById('onOpenBtn');
+			const onCloseBtn = document.getElementById('onCloseBtn');
+			const messageInput = document.getElementById('messageInput');
+			const onMessageBtn = document.getElementById('onMessageBtn');
+			
+			onCloseBtn.disabled = true;
+			messageInput.disabled = true;
+			onMessageBtn.disabled = true;
+			
+			
+		}
+		
+		window.onload = startup;
+	
+	</script>
+	
 </html>
