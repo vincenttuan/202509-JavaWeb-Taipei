@@ -20,7 +20,10 @@
 	</head>
 	<body style="padding: 20px">
 		<h1>我的 WS 聊天室</h1>
-		<div id="floating-container">
+		<div style="position:fixed;bottom:10px;right:10px;z-index:9999;">
+  			<button id="toggleChat" style="font-size:2rem;cursor:pointer;">💬</button>
+		</div>
+		<div id="floating-container" style="visibility: hidden;">
 			<div class="pure-form">
 				<legend>聊天室</legend>
 				<button type="button" id="onOpenBtn" class="button-success pure-button">OnOpen 連線</button>
@@ -42,6 +45,7 @@
 			const messageInput = document.getElementById('messageInput');
 			const onMessageBtn = document.getElementById('onMessageBtn');
 			const messageHistory = document.getElementById('messageHistory');
+			const toggleChat = document.getElementById('toggleChat');
 			
 			onCloseBtn.disabled = true;
 			messageInput.disabled = true;
@@ -95,6 +99,16 @@
 			// 按下 onMessageBtn
 			onMessageBtn.addEventListener('click', function() {
 				webSocket.send(messageInput.value);
+			});
+			
+			// 按下 toggleChat
+			toggleChat.addEventListener('click', function() {
+				const chat = document.getElementById('floating-container');
+				if(chat.style.visibility == 'hidden') {
+					chat.style.visibility = '';
+				} else {
+					chat.style.visibility = 'hidden';
+				}
 			});
 			
 			// 配置 WebSocket
