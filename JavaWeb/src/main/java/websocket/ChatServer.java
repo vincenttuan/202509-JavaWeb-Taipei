@@ -32,6 +32,7 @@ public class ChatServer {
 	@OnOpen
 	public void onOpen(Session session) {
 		System.out.printf("Client 已經連上線 session id = %s%n", session.getId());
+		sessions.add(session);
 	}
 	
 	@OnMessage
@@ -44,6 +45,7 @@ public class ChatServer {
 	@OnClose
 	public void onClose(Session session) {
 		System.out.printf("Client 已經離線 session id = %s%n", session.getId());
+		sessions.remove(session);
 	}
 	
 	@OnError
