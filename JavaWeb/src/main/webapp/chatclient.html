@@ -34,7 +34,35 @@
 			messageInput.disabled = true;
 			onMessageBtn.disabled = true;
 			
+			var webSocket = null;
+			var isConnectionSuccess = false;
 			
+			// 配置 WebSocket
+			function setWebSocket() {
+				const wsurl = 'ws://localhost:8080/JavaWeb/chatserver';
+				// 建立 WebSocket Client
+				webSocket = new WebSocket(wsurl);
+				
+				webSocket.onopen = function() {
+					
+				};
+				
+				webSocket.onmessage = function(event) {
+					
+				};
+				
+				webSocket.onclose = function() {
+					
+				};
+				
+				webSocket.onerror = function(e) {
+					
+				};
+				
+			}
+			
+			// 配置 WebSocket
+			setWebSocket();
 		}
 		
 		window.onload = startup;
