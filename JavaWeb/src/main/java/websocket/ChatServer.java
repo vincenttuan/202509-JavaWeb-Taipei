@@ -33,6 +33,8 @@ public class ChatServer {
 	public void onOpen(Session session) {
 		System.out.printf("Client 已經連上線 session id = %s%n", session.getId());
 		sessions.add(session);
+		// 廣播
+		broadcase("[進入聊天室] 大家好", session.getId());
 	}
 	
 	@OnMessage
@@ -46,6 +48,8 @@ public class ChatServer {
 	public void onClose(Session session) {
 		System.out.printf("Client 已經離線 session id = %s%n", session.getId());
 		sessions.remove(session);
+		// 廣播
+		broadcase("[離開聊天室] Bye Bye ~", session.getId());
 	}
 	
 	@OnError
