@@ -19,6 +19,9 @@ public class ChatServer {
 	public void onMessage(String message, Session session) {
 		System.out.printf("Server 端收到來自 session id = %s 的訊息: %s%n", 
 				session.getId(), message);
+		// 回應給前端
+		message = String.format("%d 說: %s", session.getId(), message);
+		session.getAsyncRemote().sendText(message);
 	}
 	
 	@OnClose
