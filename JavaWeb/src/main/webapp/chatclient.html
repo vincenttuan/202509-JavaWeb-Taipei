@@ -4,17 +4,18 @@
 		<meta charset="UTF-8">
 		<title>Chat Client</title>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+		<link rel="stylesheet" href="/JavaWeb/css/buttons.css">
 	</head>
 	<body style="padding: 20px">
 		<h1>我的 WS 聊天室</h1>
 		<div>
 			<div class="pure-form">
 				<legend>聊天室</legend>
-				<button type="button" id="onOpenBtn" class="pure-button pure-button-primary">OnOpen 連線</button>
-				<button type="button" id="onCloseBtn" class="pure-button pure-button-primary">OnClose 關閉</button>
+				<button type="button" id="onOpenBtn" class="button-success pure-button">OnOpen 連線</button>
+				<button type="button" id="onCloseBtn" class="button-error pure-button">OnClose 關閉</button>
 				<p />
 				<input type="text" id="messageInput" placeholder="請輸入訊息" />
-				<button type="button" id="onMessageBtn" class="pure-button pure-button-primary">OnMessage 傳送</button>
+				<button type="button" id="onMessageBtn" class="button-secondary pure-button">OnMessage 傳送</button>
 			</div>
 			<div class="pure-form">
 				<legend>聊天歷史紀錄</legend>
