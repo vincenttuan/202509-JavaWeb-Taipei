@@ -19,7 +19,7 @@ public class ChatServer {
 	private static List<Session> sessions = new CopyOnWriteArrayList<>();
 	
 	// 廣播
-	public void broadcase(String message, String sessionId) {
+	public void broadcast(String message, String sessionId) {
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 		message = String.format("%8s id=%s 說: %s", sdf.format(new Date()), sessionId, message);
 		for(Session session : sessions) {
@@ -34,14 +34,14 @@ public class ChatServer {
 		System.out.printf("Client 已經連上線 session id = %s%n", session.getId());
 		sessions.add(session);
 		// 廣播
-		broadcase("[進入聊天室] 大家好", session.getId());
+		broadcast("[進入聊天室] 大家好", session.getId());
 	}
 	
 	@OnMessage
 	public void onMessage(String message, Session session) {
 		System.out.printf("Server 端收到來自 session id = %s 的訊息: %s%n", session.getId(), message);
 		// 廣播
-		broadcase(message, session.getId());
+		broadcast(message, session.getId());
 	}
 	
 	@OnClose
