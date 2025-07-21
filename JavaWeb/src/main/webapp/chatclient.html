@@ -5,7 +5,21 @@
 		<title>Chat Client</title>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 	</head>
-	<body>
-	
+	<body style="padding: 20px">
+		<h1>我的 WS 聊天室</h1>
+		<div>
+			<div class="pure-form">
+				<legend>聊天室</legend>
+				<button type="button" id="onOpenBtn">OnOpen 連線</button>
+				<button type="button" id="onCloseBtn">OnClose 關閉</button>
+				<p />
+				<input type="text" id="messageInput" placeholder="請輸入訊息" />
+				<button type="button" id="onMessageBtn">OnMessage 傳送</button>
+			</div>
+			<div class="pure-form">
+				<legend>聊天歷史紀錄</legend>
+				<div id="messageHistory"></div>
+			</div>
+		</div>
 	</body>
 </html>
