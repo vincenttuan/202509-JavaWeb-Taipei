@@ -49,7 +49,7 @@ public class ChatServer {
 		System.out.printf("Client 已經離線 session id = %s%n", session.getId());
 		sessions.remove(session);
 		// 廣播
-		broadcase("[離開聊天室] Bye Bye ~", session.getId());
+		broadcast("[離開聊天室] Bye Bye ~", session.getId());
 	}
 	
 	@OnError
