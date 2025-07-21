@@ -48,7 +48,7 @@ public class SellOrderStrategy {
      * 主程式：多組參數 Demo
      */
     public static void main(String[] args) {
-        int[] testQtys = {45, 99, 199, 350, 499, 1234, 1567, 2567};
+        int[] testQtys = {1, 10, 45, 99, 199, 350, 499, 1234, 1567, 2567};
         for (int qty : testQtys) {
             List<Integer> result = distributeQty(qty);
             int sum = result.stream().mapToInt(Integer::intValue).sum();
