@@ -29,6 +29,7 @@
 			const onCloseBtn = document.getElementById('onCloseBtn');
 			const messageInput = document.getElementById('messageInput');
 			const onMessageBtn = document.getElementById('onMessageBtn');
+			const messageHistory = document.getElementById('messageHistory');
 			
 			onCloseBtn.disabled = true;
 			messageInput.disabled = true;
@@ -44,19 +45,27 @@
 				webSocket = new WebSocket(wsurl);
 				
 				webSocket.onopen = function() {
-					
+					onOpenBtn.disabled = true;
+					onCloseBtn.disabled = false;
+					messageInput.disabled = false;
+					onMessageBtn.disabled = false;
 				};
 				
 				webSocket.onmessage = function(event) {
-					
+					const msg = event.data; // 接收來自 websocket server 的訊息
+					messageHistory.insertAdjacentHTML('afterbegin', msg + '<br />');
 				};
 				
 				webSocket.onclose = function() {
-					
+					onOpenBtn.disabled = false;
+					onCloseBtn.disabled = true;
+					messageInput.disabled = true;
+					onMessageBtn.disabled = true;
 				};
 				
 				webSocket.onerror = function(e) {
-					
+					alert('錯誤訊息: ' + e);
+					console.log(e);
 				};
 				
 			}
