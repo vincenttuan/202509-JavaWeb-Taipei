@@ -47,7 +47,7 @@ public class VoteClient {
 					} else {
 						voteClient.sendMessage("{\"vote\":\"nonRecall\", \"value\":1}");
 					}
-					Thread.sleep(100);
+					Thread.sleep(10);
 				}
 				
 			} catch (Exception e) {
