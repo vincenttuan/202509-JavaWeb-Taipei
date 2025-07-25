@@ -59,12 +59,14 @@
 						recall.innerHTML = recallCount; 
 						// 變更 chartData
 						chartData.setValue(0, 1, recallCount);
+						drawChart();
 						break;
 					case 'nonRecall':
 						nonRecallCount += data.value;
 						nonRecall.innerHTML = nonRecallCount;
 						// 變更 chartData
 						chartData.setValue(1, 1, nonRecallCount);
+						drawChart();
 						break;	
 				}
 				
