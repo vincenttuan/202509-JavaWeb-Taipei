@@ -17,24 +17,24 @@ public class VoteServer {
 	@OnOpen
 	public void onOpen(Session session) {
 		sessions.add(session);
-		System.out.printf("session id: %d 已加入%n", session.getId());
+		System.out.printf("session id: %s 已加入%n", session.getId());
 	}
 	
 	@OnClose
 	public void onClose(Session session) {
 		sessions.remove(session);
-		System.out.printf("session id: %d 已離開%n", session.getId());
+		System.out.printf("session id: %s 已離開%n", session.getId());
 	}
 	
 	@OnMessage
 	public void onMessage(String jsonString, Session session) {
-		System.out.printf("session id: %d 傳來的資訊: %s%n", session.getId(), jsonString);
+		System.out.printf("session id: %s 傳來的資訊: %s%n", session.getId(), jsonString);
 		broadcast(jsonString);
 	}
 	
 	@OnError
 	public void onError(Session session, Throwable throwable) {
-		System.out.printf("session id: %d 發生錯誤: %s%n", session.getId(), throwable.toString());
+		System.out.printf("session id: %s 發生錯誤: %s%n", session.getId(), throwable.toString());
 	}
 	
 	// 廣播
