@@ -1,0 +1,46 @@
+package websocket;
+
+import java.util.concurrent.CopyOnWriteArrayList;
+
+import jakarta.websocket.OnClose;
+import jakarta.websocket.OnError;
+import jakarta.websocket.OnMessage;
+import jakarta.websocket.OnOpen;
+import jakarta.websocket.Session;
+import jakarta.websocket.server.ServerEndpoint;
+
+@ServerEndpoint("/vote/server")
+public class VoteServer {
+	
+	private static CopyOnWriteArrayList<Session> sessions = new CopyOnWriteArrayList<>();
+	
+	@OnOpen
+	public void onOpen(Session session) {
+		
+	}
+	
+	@OnClose
+	public void onClose(Session session) {
+		
+	}
+	
+	@OnMessage
+	public void onMessage(String jsonString, Session session) {
+		
+		broadcast(jsonString);
+	}
+	
+	@OnError
+	public void onError(Session session, Throwable throwable) {
+		
+	}
+	
+	// 廣播
+	private void broadcast(String jsonString) {
+		sessions.forEach(s -> {
+			if(s.isOpen()) {
+				s.getAsyncRemote().sendText(jsonString);
+			}
+		});
+	}
+}
