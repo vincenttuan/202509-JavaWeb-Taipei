@@ -34,7 +34,7 @@ public class VoteServer {
 	
 	@OnError
 	public void onError(Session session, Throwable throwable) {
-		System.out.println(session + " 發生錯誤: " + throwable);
+		System.out.printf("session id: %d 發生錯誤: %s%n", session.getId(), throwable.toString());
 	}
 	
 	// 廣播
