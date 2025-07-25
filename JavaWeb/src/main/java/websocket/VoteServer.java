@@ -28,7 +28,7 @@ public class VoteServer {
 	
 	@OnMessage
 	public void onMessage(String jsonString, Session session) {
-		
+		System.out.printf("session id: %d 傳來的資訊: %s%n", session.getId(), jsonString);
 		broadcast(jsonString);
 	}
 	
