@@ -58,14 +58,12 @@
 						recallCount += data.value;
 						recall.innerHTML = recallCount; 
 						// 變更 chartData
-						chartData.setValue(0, 1, recallCount);
 						drawChart();
 						break;
 					case 'nonRecall':
 						nonRecallCount += data.value;
 						nonRecall.innerHTML = nonRecallCount;
 						// 變更 chartData
-						chartData.setValue(1, 1, nonRecallCount);
 						drawChart();
 						break;	
 				}
@@ -98,8 +96,8 @@
       function drawChart() {
         chartData = google.visualization.arrayToDataTable([
           ['投票選項', '票數'],
-          ['罷免', 0],
-          ['反罷免', 0]
+          ['罷免', recallCount],
+          ['反罷免', nonRecallCount]
         ]);
         var options = {
           title: '投票結果'
