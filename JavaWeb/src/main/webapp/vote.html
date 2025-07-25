@@ -55,6 +55,11 @@
 		
 		//  啟動 ws
 		setWebSocket();
+		
+		// 關閉網頁時會自動斷開 WebSocket 連線
+		window.addEventListener('beforeunload', function() {
+			ws.close();
+		});
 	
 	</script>
 	
