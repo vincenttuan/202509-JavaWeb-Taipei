@@ -10,8 +10,8 @@
 		<div class="pure-form">
 			<fieldset>
 				<legend>投票統計</legend>
-				<span class="button-error pure-button" id="recall">罷免</span> 0 票 
-				<span class="button-success pure-button" id="nonrecall">反罷</span> 0 票 
+				<span class="button-error pure-button">罷免</span> <span id="recall">0</span> 票 
+				<span class="button-success pure-button">反罷</span> <span id="nonRecall">0</span> 票 
 			</fieldset>
 		</div>
 		<p />
@@ -33,7 +33,10 @@
 	</body>
 	<script type="text/javascript">
 		const recall = document.getElementById('recall');
-		const nonrecall = document.getElementById('nonrecall');
+		const nonRecall = document.getElementById('nonRecall');
+		
+		var recallCount = 0; // 罷免票數
+		var nonRecallCount = 0; // 反罷票數
 		
 		var ws = null;		
 		function setWebSocket() {
@@ -47,6 +50,19 @@
 				
 			};
 			ws.onmessage = function(event) {
+				// event.data 會得到 ws 傳來的廣播字串
+				// JSON.parse 是將 json 字串轉物件
+				const data = JSON.parse(event.data);
+				switch(data.vote) {
+					case 'recall':
+						recallCount += data.vote;
+						recall.innerHTML = recallCount; 
+						break;
+					case 'nonrecall':
+						nonRecallCount += data.vote;
+						nonRecall.innerHTML = nonRecallCount;
+						break;	
+				}
 				
 			};
 			ws.onerror = function(event) {
