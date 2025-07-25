@@ -16,12 +16,12 @@ public class VoteServer {
 	
 	@OnOpen
 	public void onOpen(Session session) {
-		
+		sessions.add(session);
 	}
 	
 	@OnClose
 	public void onClose(Session session) {
-		
+		sessions.remove(session);
 	}
 	
 	@OnMessage
@@ -32,7 +32,7 @@ public class VoteServer {
 	
 	@OnError
 	public void onError(Session session, Throwable throwable) {
-		
+		System.out.println(session + " 發生錯誤: " + throwable);
 	}
 	
 	// 廣播
