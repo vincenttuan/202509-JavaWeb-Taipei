@@ -57,10 +57,14 @@
 					case 'recall':
 						recallCount += data.value;
 						recall.innerHTML = recallCount; 
+						// 變更 chartData
+						chartData.setValue(0, 0, recallCount);
 						break;
 					case 'nonRecall':
 						nonRecallCount += data.value;
 						nonRecall.innerHTML = nonRecallCount;
+						// 變更 chartData
+						chartData.setValue(1, 1, nonRecallCount);
 						break;	
 				}
 				
