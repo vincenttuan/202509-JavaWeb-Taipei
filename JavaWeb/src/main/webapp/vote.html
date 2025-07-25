@@ -33,8 +33,7 @@
 		const recallBtn = document.getElementById('recall');
 		const nonRecallBtn = document.getElementById('nonRecall');
 		
-		var ws = null;
-		
+		var ws = null;		
 		function setWebSocket() {
 			const wsurl = 'ws://localhost:8080/JavaWeb/vote/server';
 			// 建立 WebSocket Client
@@ -60,6 +59,31 @@
 		window.addEventListener('beforeunload', function() {
 			ws.close();
 		});
+		
+		// 按下 [罷免一票] 按鈕
+		recallBtn.addEventListener('click', function() {
+			// 要傳送的資料
+			const data = {
+					vote: "recall",
+					value: 1
+			};
+			// 傳送
+			// JSON.stringify 就是將 data 物件轉 json 字串
+			ws.send(JSON.stringify(data));
+		});
+		
+		// 按下 [反罷一票] 按鈕
+		nonRecallBtn.addEventListener('click', function() {
+			// 要傳送的資料
+			const data = {
+					vote: "nonRecall",
+					value: 1
+			};
+			// 傳送
+			// JSON.stringify 就是將 data 物件轉 json 字串
+			ws.send(JSON.stringify(data));
+		});
+		
 	
 	</script>
 	
