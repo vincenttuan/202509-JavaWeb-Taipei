@@ -85,24 +85,24 @@
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 	  
-      var chart = null;
+      var pieChart = null;
+      var columnChart = null;
       var chartData = null;
       
       function drawChart() {
-
         var chartData = google.visualization.arrayToDataTable([
           ['投票選項', '票數'],
           ['罷免', 0],
           ['反罷免', 0]
         ]);
-
         var options = {
           title: '投票結果'
         };
-
-        chart = new google.visualization.PieChart(document.getElementById('chart1'));
-
-        chart.draw(chartData, options);
+        
+        columnChart = new google.visualization.ColumnChart(document.getElementById('chart1'));
+        pieChart = new google.visualization.PieChart(document.getElementById('chart2'));
+        columnChart.draw(chartData, options);
+        pieChart.draw(chartData, options);
       }
     </script>
 	
