@@ -29,7 +29,7 @@ public class VoteClient {
 	}
 	
 	@OnError
-	public void onError(Session session) {
+	public void onError(Throwable throwable) {
 		
 	}
 	
