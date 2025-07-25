@@ -17,11 +17,13 @@ public class VoteServer {
 	@OnOpen
 	public void onOpen(Session session) {
 		sessions.add(session);
+		System.out.printf("session id: %d 已加入%n", session.getId());
 	}
 	
 	@OnClose
 	public void onClose(Session session) {
 		sessions.remove(session);
+		System.out.printf("session id: %d 已離開%n", session.getId());
 	}
 	
 	@OnMessage
