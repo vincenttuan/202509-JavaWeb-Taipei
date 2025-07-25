@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>投票</title>
+		<title>唱票所</title>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 		<link rel="stylesheet" href="/JavaWeb/css/buttons.css">
 		<style type="text/css">
@@ -29,4 +29,33 @@
 			</fieldset>
 		</div>
 	</body>
+	<script type="text/javascript">
+		const recallBtn = document.getElementById('recall');
+		const nonRecallBtn = document.getElementById('nonRecall');
+		
+		var ws = null;
+		
+		function setWebSocket() {
+			const wsurl = 'ws://localhost:8080/JavaWeb/vote/server';
+			// 建立 WebSocket Client
+			ws = new WebSocket(wsurl);
+			ws.onopen = function() {
+				
+			};
+			ws.onclose = function() {
+				
+			};
+			ws.onmessage = function(event) {
+				
+			};
+			ws.onerror = function(event) {
+				
+			};
+		}
+		
+		//  啟動 ws
+		setWebSocket();
+	
+	</script>
+	
 </html>
