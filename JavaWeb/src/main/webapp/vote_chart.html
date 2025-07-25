@@ -85,12 +85,12 @@
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 	  
-      var pieChart = null;
-      var columnChart = null;
-      var chartData = null;
+      var pieChart = null; // 圓餅圖
+      var columnChart = null; // 柱狀圖
+      var chartData = null; // 圖資
       
       function drawChart() {
-        var chartData = google.visualization.arrayToDataTable([
+        chartData = google.visualization.arrayToDataTable([
           ['投票選項', '票數'],
           ['罷免', 0],
           ['反罷免', 0]
