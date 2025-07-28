@@ -45,9 +45,13 @@ public class UploadFastfoodServlet extends HttpServlet {
 		String productImage = Base64.getEncoder().encodeToString(fileBytes); // byte[] 轉 base64 字串
 		
 		// 儲存
-		dao.addFastfood(productId, productName, productPrice, productImage);
+		try {
+			dao.addFastfood(productId, productName, productPrice, productImage);
+			resp.getWriter().print("資料儲存成功");
+		} catch (Exception e) {
+			resp.getWriter().print("資料儲存失敗<p />" + e.getMessage());
+		}
 		
-		resp.getWriter().print("資料儲存成功");
 	}
 	
 }
