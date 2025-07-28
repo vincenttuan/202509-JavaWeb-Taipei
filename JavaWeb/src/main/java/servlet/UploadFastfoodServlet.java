@@ -52,7 +52,17 @@ public class UploadFastfoodServlet extends HttpServlet {
 			resp.getWriter().print("資料儲存失敗<p />" + e.getMessage());
 		}
 		
-		resp.getWriter().print("<p /><a href='/JavaWeb/upload_fastfood.html'>回上傳頁</a>");
+		resp.getWriter().print("<p />5 秒後會自動 <a href='/JavaWeb/upload_fastfood.html'>回上傳頁</a>");
+		// 5 秒後自動回上傳頁
+		String js = """
+				<script>
+					setTimeout(function(){
+						window.location.href='/JavaWeb/upload_fastfood.html';
+					}, 5000);
+				</script>
+				""";
+		resp.getWriter().print(js);
+		
 	}
 	
 }
