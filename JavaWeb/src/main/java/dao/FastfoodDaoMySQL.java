@@ -60,8 +60,17 @@ public class FastfoodDaoMySQL extends BaseDao implements FastfoodDao {
 
 	@Override
 	public void addFastfood(String productId, String productName, String productPrice, String productImage) {
-		// TODO Auto-generated method stub
-		
+		String sql = "insert into fastfood(product_id, product_name, product_price, product_image) values(?, ?, ?, ?)";
+		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
+			pstmt.setString(1, productId);
+			pstmt.setString(2, productName);
+			pstmt.setInt(3, Integer.parseInt(productPrice));
+			pstmt.setString(4, productImage);
+			// 執行更新
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
