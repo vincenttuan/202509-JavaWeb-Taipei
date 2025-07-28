@@ -70,6 +70,7 @@ public class FastfoodDaoMySQL extends BaseDao implements FastfoodDao {
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new RuntimeException(e.getMessage());
 		}
 	}
 
