@@ -29,4 +29,19 @@
 			</fieldset>
 		</form>
 	</body>
+	<script>
+		document.getElementById('productImage').addEventListener('change', function(event) {
+			// 得到檔案
+			const file = event.target.files[0];
+			if(!file) return;
+			
+			// 取得檔名
+			// 例如: d1417玉米湯33.png 去除附檔名後變成 d1417玉米湯33
+			const fileName = file.name.substring(0, file.name.lastIndexOf('.'));
+			console.log(fileName);
+			
+			
+		});
+	</script>
+	
 </html>
