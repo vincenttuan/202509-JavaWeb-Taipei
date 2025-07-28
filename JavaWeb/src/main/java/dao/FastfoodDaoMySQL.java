@@ -75,7 +75,14 @@ public class FastfoodDaoMySQL extends BaseDao implements FastfoodDao {
 
 	@Override
 	public void deleteFastfoodById(String productId) {
-		// TODO Auto-generated method stub
+		String sql = "delete from fastfood where product_id = ?";
+		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
+			pstmt.setString(1, productId);
+			// 執行更新
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
