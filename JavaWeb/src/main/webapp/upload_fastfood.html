@@ -40,6 +40,19 @@
 			const fileName = file.name.substring(0, file.name.lastIndexOf('.'));
 			console.log(fileName);
 			
+			// 利用正則表示來拆解檔名
+			const regex = /^([a-zA-Z0-9]+)(.+?)(\d+)$/;
+			const match = fileName.match(regex);
+			
+			if(match) {
+				document.getElementById('productId').value = match[1];
+				document.getElementById('productName').value = match[2];
+				document.getElementById('productPrice').value = match[3];
+			} else {
+				alert('檔名格式不正確 !');
+			}
+			
+			
 		});
 	</script>
 	
