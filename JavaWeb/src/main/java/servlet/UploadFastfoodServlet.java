@@ -1,8 +1,18 @@
 package servlet;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
+
+import dao.FastfoodDao;
+import dao.FastfoodDaoMySQL;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 
 @WebServlet("/upload/fastfood")
 @MultipartConfig(
@@ -11,5 +21,33 @@ import jakarta.servlet.http.HttpServlet;
 )
 public class UploadFastfoodServlet extends HttpServlet {
 	
+	private FastfoodDao dao = new FastfoodDaoMySQL();
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// 重導到 /JavaWeb/upload_fastfood.html
+		resp.sendRedirect("/JavaWeb/upload_fastfood.html");
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html;charset=utf-8");
+		
+		// 取得上傳資料
+		String productId = req.getParameter("productId");
+		String productName = req.getParameter("productName");
+		String productPrice = req.getParameter("productPrice");
+		// 取得上傳檔案資料
+		Part filePart = req.getPart("productImage"); // 檔案實體
+		byte[] fileBytes = filePart.getInputStream().readAllBytes(); // 檔案轉 byte[]
+		String productImage = Base64.getEncoder().encodeToString(fileBytes); // byte[] 轉 base64 字串
+		
+		// 儲存
+		dao.addFastfood(productId, productName, productPrice, productImage);
+		
+		resp.getWriter().print("資料儲存成功");
+	}
 	
 }
