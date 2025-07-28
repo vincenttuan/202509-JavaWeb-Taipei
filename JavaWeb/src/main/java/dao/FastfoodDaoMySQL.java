@@ -3,6 +3,8 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Fastfood;
@@ -35,8 +37,27 @@ public class FastfoodDaoMySQL extends BaseDao implements FastfoodDao {
 
 	@Override
 	public List<Fastfood> findAllFastfoods() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Fastfood> fastfoods = new ArrayList<>();
+		String sql = "select product_id, product_name, product_price, product_image from fastfood";
+		try(Statement stmt = getConnection().createStatement();
+			ResultSet rs = stmt.executeQuery(sql);) {
+			
+			while (rs.next()) {
+				Fastfood fastfood = new Fastfood();
+				fastfood.setProductId(rs.getString("product_id"));
+				fastfood.setProductName(rs.getString("product_name"));
+				fastfood.setProductPrice(rs.getInt("product_price"));
+				fastfood.setProductImage(rs.getString("product_image"));
+				// 加入到 fastfoods 集合
+				fastfoods.add(fastfood);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return fastfoods;
 	}
 
 	@Override
