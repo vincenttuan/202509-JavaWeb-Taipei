@@ -55,8 +55,6 @@ public class FastfoodDaoMySQL extends BaseDao implements FastfoodDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
 		return fastfoods;
 	}
 
