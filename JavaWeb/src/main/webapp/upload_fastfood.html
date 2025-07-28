@@ -19,7 +19,13 @@
 		<form class="pure-form" method="post" action="/upload/fastfood">
 			<fieldset>
 				<legend>上傳速食商品</legend>
-				
+				商品編號: <input type="text" id="productId" name="productId" required /><p />
+				商品名稱: <input type="text" id="productName" name="productName" required /><p />
+				商品價格: <input type="number" id="productPrice" name="productPrice" required /><p />
+				<input type="file" id="productImage" name="productImage" accept="image/*" />
+				<button type="submit">傳送</button><p />
+				<!-- 圖片預覽 -->
+				<img id="previewImage" alt="圖片預覽" /><p />
 			</fieldset>
 		</form>
 	</body>
