@@ -18,7 +18,7 @@
 				<table class="pure-table pure-table-bordered">
 					<thead>
 						<tr>
-							<th>id</th><th>name</th><th>price</th><th>image</th>
+							<th>id</th><th>name</th><th>price</th><th>image</th><th>delete</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -29,6 +29,9 @@
 								<td>${ fastfood.productPrice }</td>
 								<td>
 									<img src="data:image/png;base64, ${ fastfood.productImage }" width="100" />
+								</td>
+								<td>
+									<a href="/JavaWeb/delete/fastfood?productId=${ fastfood.productId }" class="button-error pure-button">刪除</a>
 								</td>
 							</tr>
 						</c:forEach>
