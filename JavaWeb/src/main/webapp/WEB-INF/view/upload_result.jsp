@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="/JavaWeb/css/buttons.css">
 	</head>
 	<body>
-		<div id="pure-form">
+		<div class="pure-form">
 			<fieldset>
 				<legend>上傳結果</legend>
 				<%=request.getAttribute("message") %>
