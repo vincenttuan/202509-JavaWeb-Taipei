@@ -10,6 +10,8 @@
 		<link rel="stylesheet" href="/JavaWeb/css/buttons.css">
 	</head>
 	<body style="padding: 20px">
+		<!-- Menu -->
+		<%@include file="/WEB-INF/view/menu.jspf" %>
 		<div class="pure-form">
 			<fieldset>
 				<legend>List Fastfood</legend>
