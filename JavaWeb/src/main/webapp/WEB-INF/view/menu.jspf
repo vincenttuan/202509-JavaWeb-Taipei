@@ -1,0 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<div class="pure-form">
+	<a href="/JavaWeb/upload/fastfood" class="pure-button pure-button-primary">商品上傳</a>
+	<a href="/JavaWeb/list/fastfood" class="pure-button pure-button-primary">商品列表</a>
+</div>
+<p />
