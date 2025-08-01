@@ -25,7 +25,9 @@
 								<td>${ fastfood.productId }</td>
 								<td>${ fastfood.productName }</td>
 								<td>${ fastfood.productPrice }</td>
-								<td>${ fastfood.productImage }</td>
+								<td>
+									<img src="data:image/png;base64, ${ fastfood.productImage }" />
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
