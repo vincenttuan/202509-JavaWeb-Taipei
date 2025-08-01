@@ -45,24 +45,16 @@ public class UploadFastfoodServlet extends HttpServlet {
 		String productImage = Base64.getEncoder().encodeToString(fileBytes); // byte[] 轉 base64 字串
 		
 		// 儲存
+		String message = "";
 		try {
 			dao.addFastfood(productId, productName, productPrice, productImage);
-			resp.getWriter().print("資料儲存成功");
+			message = "資料儲存成功";
 		} catch (Exception e) {
-			resp.getWriter().print("資料儲存失敗<p />" + e.getMessage());
+			message = "資料儲存失敗: " + e.getMessage();
 		}
 		
-		resp.getWriter().print("<p />5 秒後會自動 <a href='/JavaWeb/upload_fastfood.html'>回上傳頁</a>");
-		// 5 秒後自動回上傳頁
-		String js = """
-				<script>
-					setTimeout(function(){
-						window.location.href='/JavaWeb/upload_fastfood.html';
-					}, 5000);
-				</script>
-				""";
-		resp.getWriter().print(js);
-		
+		req.setAttribute("message", message);
+		req.getRequestDispatcher("/WEB-INF/view/upload_result.jsp").forward(req, resp);
 	}
 	
 }
