@@ -18,6 +18,8 @@
 		</style>
 	</head>
 	<body style="padding: 20px">
+		<!-- Menu -->
+		<%@include file="/WEB-INF/view/menu.jspf" %>
 		<form class="pure-form" method="post" action="/JavaWeb/upload/fastfood" enctype="multipart/form-data">
 			<fieldset>
 				<legend>上傳速食商品</legend>

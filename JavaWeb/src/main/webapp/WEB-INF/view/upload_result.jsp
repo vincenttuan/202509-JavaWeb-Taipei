@@ -8,7 +8,9 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 		<link rel="stylesheet" href="/JavaWeb/css/buttons.css">
 	</head>
-	<body>
+	<body style="padding: 20px">
+		<!-- Menu -->
+		<%@include file="/WEB-INF/view/menu.jspf" %>
 		<div class="pure-form">
 			<fieldset>
 				<legend>上傳結果</legend>
