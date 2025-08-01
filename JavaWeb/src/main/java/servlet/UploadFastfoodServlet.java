@@ -25,8 +25,8 @@ public class UploadFastfoodServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 重導到 /JavaWeb/upload_fastfood.html
-		resp.sendRedirect("/JavaWeb/upload_fastfood.html");
+		// 重導到 /WEB-INF/view/upload_fastfood.jsp
+		req.getRequestDispatcher("/WEB-INF/view/upload_fastfood.jsp").forward(req, resp);
 	}
 	
 	@Override
