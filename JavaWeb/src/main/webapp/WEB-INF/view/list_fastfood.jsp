@@ -26,7 +26,7 @@
 								<td>${ fastfood.productName }</td>
 								<td>${ fastfood.productPrice }</td>
 								<td>
-									<img src="data:image/png;base64, ${ fastfood.productImage }" />
+									<img src="data:image/png;base64, ${ fastfood.productImage }" width="100" />
 								</td>
 							</tr>
 						</c:forEach>
